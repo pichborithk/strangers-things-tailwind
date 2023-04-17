@@ -7,13 +7,10 @@ type RegisterUserArgs = {
   password: string;
 };
 
-type ReturnFetch = {
+type TokenFetch = {
   error: Error | null;
-};
-
-type LoginFetch = {
   data: { token: string; message: string } | null;
-} & ReturnFetch;
+};
 
 type Error = {
   name: string;
@@ -23,7 +20,7 @@ type Error = {
 export async function registerUser({
   username,
   password,
-}: RegisterUserArgs): Promise<LoginFetch | void> {
+}: RegisterUserArgs): Promise<TokenFetch | void> {
   try {
     const response = await fetch(`${BASE_URL}/users/register`, {
       method: 'POST',
