@@ -11,12 +11,25 @@ type RegistrationProps = {
 const Registration = ({ setToken }: RegistrationProps) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [failMessage, setFailMessage] = useState('');
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>): void {
+  async function handleSubmit(
+    event: FormEvent<HTMLFormElement>
+  ): Promise<void> {
     event.preventDefault();
-    registerUser({ username, password });
-    setUsername('');
-    setPassword('');
+
+    try {
+      const result = await registerUser({ username, password });
+      if (result && result.error) {
+        setFailMessage(result.error.message);
+        throw result.error;
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setUsername('');
+      setPassword('');
+    }
   }
 
   return (
@@ -49,7 +62,7 @@ const Registration = ({ setToken }: RegistrationProps) => {
             Already Have An Account? <Link to='/signin'>Sign in</Link>
           </p>
         </div>
-        <span></span>
+        <span>{failMessage}</span>
       </form>
       <img src={logo} alt='join' />
     </div>
