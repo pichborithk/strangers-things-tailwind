@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import { Registration } from './components';
 
 function App() {
+  const [token, setToken] = useState('');
+
   return (
     <>
-      <Registration />
+      <Registration setToken={setToken} />
     </>
   );
 }
