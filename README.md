@@ -1,1 +1,1 @@
-# Stranger's Things TypeCcript
+# Stranger's Things TypeScript
