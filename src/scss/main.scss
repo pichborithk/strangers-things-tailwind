@@ -1,5 +1,6 @@
 // variables & functions
 @import 'functions';
+@import 'variables';
 
 // base & layout
 @import 'base';
@@ -9,3 +10,94 @@
 // components (button, card, navbar etc)
 
 // utilities (margin, padding, opacity, etc)
+
+#root {
+  @include display-flex;
+  min-height: 100vh;
+}
+
+.register {
+  @include display-flex;
+
+  border-radius: 25px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+
+  height: 500px;
+  overflow: hidden;
+
+  > img {
+    height: 100%;
+    width: 500px;
+  }
+
+  form {
+    @include display-flex(center, space-evenly);
+    flex-direction: column;
+
+    background-color: $primary-color;
+    color: #fff;
+
+    width: 500px;
+    height: 100%;
+
+    > fieldset {
+      @include display-flex(start, center);
+      flex-direction: column;
+      gap: 10px;
+
+      // border: 1px solid rgba(67, 67, 67, 0.7);
+      border: none;
+
+      width: 75%;
+
+      > label {
+        font-size: 1.2rem;
+        margin-left: 10px;
+      }
+
+      > input {
+        padding: 15px 20px;
+        width: 100%;
+
+        font-size: 1.2rem;
+        color: #000;
+
+        border-radius: 10px;
+        border: none;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    > div {
+      text-align: center;
+
+      width: 75%;
+
+      > p > a {
+        text-decoration: underline;
+      }
+
+      > button {
+        border: 1px solid #fff;
+        background-color: $primary-color;
+        border-radius: 10px;
+
+        font-size: 1.2rem;
+
+        width: 100%;
+        padding: 10px 20px;
+        margin-bottom: 10px;
+
+        cursor: pointer;
+
+        &:hover {
+          color: $primary-color;
+          background-color: #fff;
+        }
+      }
+    }
+  }
+}

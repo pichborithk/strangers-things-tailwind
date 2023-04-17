@@ -1,5 +1,11 @@
+import { Registration } from './components';
+
 function App() {
-  return <div className='app'></div>;
+  return (
+    <>
+      <Registration />
+    </>
+  );
 }
 
 export default App;
