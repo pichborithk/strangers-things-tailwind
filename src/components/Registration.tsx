@@ -1,10 +1,6 @@
-import {
-  Dispatch,
-  FormEvent,
-  SetStateAction,
-  useEffect,
-  useState,
-} from 'react';
+import { Dispatch, FormEvent, SetStateAction, useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import logo from '../asset/Join.png';
 import { registerUser } from '../api/auth';
 
@@ -50,7 +46,7 @@ const Registration = ({ setToken }: RegistrationProps) => {
         <div>
           <button>Create Account</button>
           <p>
-            Already Have An Account? <a href='#'>Sign in</a>
+            Already Have An Account? <Link to='/signin'>Sign in</Link>
           </p>
         </div>
         <span></span>
