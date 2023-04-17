@@ -20,7 +20,10 @@ type Error = {
   message: string;
 };
 
-export async function registerUser({ username, password }: RegisterUserArgs) {
+export async function registerUser({
+  username,
+  password,
+}: RegisterUserArgs): Promise<LoginFetch | void> {
   try {
     const response = await fetch(`${BASE_URL}/users/register`, {
       method: 'POST',
@@ -29,12 +32,8 @@ export async function registerUser({ username, password }: RegisterUserArgs) {
       },
       body: JSON.stringify({ user: { username, password } }),
     });
-    const result: LoginFetch = await response.json();
-    if (result.error) {
-      throw result.error;
-    } else {
-      console.log(result.data!.message);
-    }
+    const result = await response.json();
+    return result;
   } catch (error) {
     console.error(error);
   }
