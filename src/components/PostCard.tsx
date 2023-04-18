@@ -10,12 +10,9 @@ const PostCard = ({ post, token, isOwner }: PostCardProps) => {
       <p>{post.price}</p>
       <p>{post.author.username}</p>
       <p>{post.location}</p>
-      {token &&
-        (isOwner ? (
-          <Link to={`/${post._id}`}>View</Link>
-        ) : (
-          <Link to={`/${post._id}`}>Send Message</Link>
-        ))}
+      {token && (
+        <Link to={`/${post._id}`}>{isOwner ? 'View' : 'Send Message'}</Link>
+      )}
     </div>
   );
 };

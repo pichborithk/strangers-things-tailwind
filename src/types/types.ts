@@ -90,3 +90,9 @@ export type PostCardProps = {
   isOwner: boolean;
   token: string | null;
 };
+
+export type ViewPostProps = {
+  posts: Post[];
+  userData: UserData | null;
+  token: string | null;
+};
