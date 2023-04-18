@@ -4,9 +4,10 @@ import { login } from '../api/auth';
 
 type SignInProps = {
   setToken: Dispatch<SetStateAction<string | null>>;
+  setIsLogin: Dispatch<SetStateAction<boolean>>;
 };
 
-const SignIn = ({ setToken }: SignInProps) => {
+const SignIn = ({ setToken, setIsLogin }: SignInProps) => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -25,6 +26,7 @@ const SignIn = ({ setToken }: SignInProps) => {
         console.log(result.data.message);
         setToken(result.data.token);
         localStorage.setItem('TOKEN', result.data.token);
+        setIsLogin(true);
         navigate('/home');
       }
     } catch (error) {
