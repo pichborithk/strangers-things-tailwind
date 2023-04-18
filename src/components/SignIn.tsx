@@ -1,9 +1,9 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../api/auth';
 import { SignInProps } from '../types/types';
 
-const SignIn = ({ setToken, setIsLogin }: SignInProps) => {
+const SignIn = ({ setToken, token }: SignInProps) => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -22,7 +22,6 @@ const SignIn = ({ setToken, setIsLogin }: SignInProps) => {
         console.log(result.data.message);
         setToken(result.data.token);
         localStorage.setItem('TOKEN', result.data.token);
-        setIsLogin(true);
         navigate('/home');
       }
     } catch (error) {
@@ -32,6 +31,10 @@ const SignIn = ({ setToken, setIsLogin }: SignInProps) => {
       setPassword('');
     }
   }
+
+  useEffect(() => {
+    if (token) navigate('/');
+  }, [token]);
 
   return (
     <div className='signin'>

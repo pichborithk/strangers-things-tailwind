@@ -41,13 +41,14 @@ export type Error = {
 };
 
 export type HomeProps = {
-  isLogin: boolean;
+  token: string | null;
+  userData: UserData | null;
 };
 
 export type NavbarProps = {
-  isLogin: boolean;
-  setIsLogin: Dispatch<SetStateAction<boolean>>;
+  token: string | null;
   setToken: Dispatch<SetStateAction<string | null>>;
+  setUserData: Dispatch<SetStateAction<UserData | null>>;
 };
 
 export type PostsProps = {
@@ -56,5 +57,5 @@ export type PostsProps = {
 
 export type SignInProps = {
   setToken: Dispatch<SetStateAction<string | null>>;
-  setIsLogin: Dispatch<SetStateAction<boolean>>;
+  token: string | null;
 };

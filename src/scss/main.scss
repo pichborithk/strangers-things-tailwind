@@ -227,11 +227,11 @@
 .posts {
   @include display-flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
 
   height: 100%;
   width: 100%;
-  padding: 100px 10% 0;
+  padding: 120px 10% 40px;
 
   > .post {
     width: 100%;
