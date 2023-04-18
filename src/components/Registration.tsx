@@ -1,10 +1,8 @@
-import { Dispatch, FormEvent, SetStateAction, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import logo from '../asset/Join.png';
 import { registerUser } from '../api/auth';
-
-type RegistrationProps = {};
 
 const Registration = () => {
   const [username, setUsername] = useState('');

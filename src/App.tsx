@@ -24,7 +24,7 @@ function App() {
     <>
       <Navbar isLogin={isLogin} setIsLogin={setIsLogin} setToken={setToken} />
       <Routes>
-        <Route index element={<Home />} />
+        <Route index element={<Home isLogin={isLogin} />} />
         <Route path='/posts' element={<Posts posts={posts} />} />
         <Route
           path='/signin'

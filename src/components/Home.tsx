@@ -1,18 +1,6 @@
-import { Dispatch, SetStateAction, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { HomeProps } from '../types/types';
 
-type HomeProps = {
-  token: string | null;
-  setToken: Dispatch<SetStateAction<string | null>>;
-};
-
-const Home = () => {
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if (!token) navigate('/signin');
-  // }, [token]);
-
+const Home = ({ isLogin }: HomeProps) => {
   return (
     <div className='home'>
       <p>Welcome to Stranger's Things</p>

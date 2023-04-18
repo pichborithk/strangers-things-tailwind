@@ -1,11 +1,5 @@
-import { Dispatch, SetStateAction } from 'react';
 import { Link } from 'react-router-dom';
-
-type NavbarProps = {
-  isLogin: boolean;
-  setIsLogin: Dispatch<SetStateAction<boolean>>;
-  setToken: Dispatch<SetStateAction<string | null>>;
-};
+import { NavbarProps } from '../types/types';
 
 const Navbar = ({ isLogin, setIsLogin, setToken }: NavbarProps) => {
   function handleSignOut(): void {

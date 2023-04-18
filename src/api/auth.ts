@@ -1,28 +1,13 @@
-import { Post } from '../types/types';
+import { Post, TokenFetch, UserAuth } from '../types/types';
 
 const BASE_URL = `${import.meta.env.VITE_API_URL}/${
   import.meta.env.VITE_COHORT_NAME
 }`;
 
-type UserInfo = {
-  username: string;
-  password: string;
-};
-
-type TokenFetch = {
-  error: Error | null;
-  data: { token: string; message: string } | null;
-};
-
-type Error = {
-  name: string;
-  message: string;
-};
-
 export async function registerUser({
   username,
   password,
-}: UserInfo): Promise<TokenFetch | void> {
+}: UserAuth): Promise<TokenFetch | void> {
   try {
     const response = await fetch(`${BASE_URL}/users/register`, {
       method: 'POST',
@@ -41,7 +26,7 @@ export async function registerUser({
 export async function login({
   username,
   password,
-}: UserInfo): Promise<TokenFetch | void> {
+}: UserAuth): Promise<TokenFetch | void> {
   try {
     const response = await fetch(`${BASE_URL}/users/login`, {
       method: 'POST',
@@ -66,5 +51,22 @@ export async function fetchAllPosts(): Promise<Post[]> {
   } catch (error) {
     console.error(error);
     return [];
+  }
+}
+
+export async function fetchUserData(token: string) {
+  try {
+    const response = await fetch(`${BASE_URL}/users/me`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const result = await response.json();
+    if (result.error) throw result.error;
+    return result.data;
+  } catch (error) {
+    console.error(error);
+    return null;
   }
 }
