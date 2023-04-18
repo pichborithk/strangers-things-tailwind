@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../api/auth';
 
 type SignInProps = {
-  setToken: Dispatch<SetStateAction<string>>;
+  setToken: Dispatch<SetStateAction<string | null>>;
 };
 
 const SignIn = ({ setToken }: SignInProps) => {
