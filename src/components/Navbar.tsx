@@ -12,18 +12,18 @@ const Navbar = ({ token, setToken, setUserData }: NavbarProps) => {
     <nav className='navbar'>
       <p>Stranger's Things</p>
       <div className='nav-link'>
-        <Link to='/'>Home</Link>
+        <Link to='/'>HOME</Link>
         {token ? (
           <>
-            <Link to='/profile'>Profile</Link>
+            <Link to='/profile'>PROFILE</Link>
             <Link to='/' onClick={handleSignOut}>
               Sign Out
             </Link>
           </>
         ) : (
           <>
-            <Link to='/register'>Sign Up</Link>
-            <Link to='/signin'>Sign In</Link>
+            <Link to='/register'>SIGN UP</Link>
+            <Link to='/signin'>SIGN In</Link>
           </>
         )}
       </div>

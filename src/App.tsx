@@ -6,6 +6,7 @@ import {
   Profile,
   Registration,
   SignIn,
+  ViewPost,
 } from './components';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Post, UserData } from './types/types';
@@ -64,6 +65,10 @@ function App() {
               getUserData={getUserData}
             />
           }
+        />
+        <Route
+          path='/:id'
+          element={<ViewPost posts={posts} token={token} userData={userData} />}
         />
         <Route path='*' element={<Navigate to='/' />} />
       </Routes>
