@@ -1,14 +1,43 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Dispatch, FormEvent, SetStateAction, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { login } from '../api/auth';
 
-const SignIn = () => {
+type SignInProps = {
+  setToken: Dispatch<SetStateAction<string>>;
+};
+
+const SignIn = ({ setToken }: SignInProps) => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [failMessage, setFailMessage] = useState('');
 
+  async function handleSignIn(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    try {
+      const result = await login({ username, password });
+      if (result && result.error) {
+        setFailMessage(result.error.message);
+        throw result.error;
+      }
+      if (result && result.data) {
+        console.log(result.data.message);
+        setToken(result.data.token);
+        localStorage.setItem('TOKEN', result.data.token);
+        navigate('/home');
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setUsername('');
+      setPassword('');
+    }
+  }
+
   return (
     <div className='signin'>
-      <form action=''>
+      <form onSubmit={handleSignIn}>
         <h1>Sign In</h1>
         <fieldset>
           <label htmlFor='username'>Username</label>
@@ -31,9 +60,7 @@ const SignIn = () => {
           />
         </fieldset>
         <div>
-          <button>
-            <Link to='/home'>Sign In</Link>
-          </button>
+          <button>Sign In</button>
           <p>
             Forget <a>Username / Password</a>?
           </p>

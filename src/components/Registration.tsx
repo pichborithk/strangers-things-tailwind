@@ -4,16 +4,14 @@ import { Link } from 'react-router-dom';
 import logo from '../asset/Join.png';
 import { registerUser } from '../api/auth';
 
-type RegistrationProps = {
-  setToken: Dispatch<SetStateAction<string>>;
-};
+type RegistrationProps = {};
 
-const Registration = ({ setToken }: RegistrationProps) => {
+const Registration = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [failMessage, setFailMessage] = useState('');
 
-  async function handleSubmit(
+  async function handleRegister(
     event: FormEvent<HTMLFormElement>
   ): Promise<void> {
     event.preventDefault();
@@ -34,7 +32,7 @@ const Registration = ({ setToken }: RegistrationProps) => {
 
   return (
     <div className='register'>
-      <form className='form' onSubmit={handleSubmit}>
+      <form className='form' onSubmit={handleRegister}>
         <h1>Create An Account</h1>
         <fieldset>
           <label htmlFor='username'>Username</label>
