@@ -7,7 +7,7 @@ const Home = ({ posts, token, userData }: HomeProps) => {
     <div className='home'>
       <form>
         <input placeholder='Search' />
-        <Link to='/new'>New Post</Link>
+        {token && <Link to='/new'>New Post</Link>}
       </form>
       <div className='posts'>
         {posts.map((post) =>

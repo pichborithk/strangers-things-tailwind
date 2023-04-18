@@ -95,4 +95,6 @@ export type ViewPostProps = {
   posts: Post[];
   userData: UserData | null;
   token: string | null;
+  getPosts: () => Promise<void>;
+  getUserData: (token: string) => Promise<void>;
 };

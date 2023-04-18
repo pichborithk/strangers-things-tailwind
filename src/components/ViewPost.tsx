@@ -1,8 +1,15 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Post, ViewPostProps } from '../types/types';
 import { useEffect, useState } from 'react';
+import { deletePost } from '../api/auth';
 
-const ViewPost = ({ posts, token, userData }: ViewPostProps) => {
+const ViewPost = ({
+  posts,
+  token,
+  userData,
+  getPosts,
+  getUserData,
+}: ViewPostProps) => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [post, setPost] = useState<Post | null>(null);
@@ -11,6 +18,15 @@ const ViewPost = ({ posts, token, userData }: ViewPostProps) => {
     if (!token) navigate('/');
     setPost(posts.find((post) => post._id === id)!);
   }, [token, id]);
+
+  async function handleDelete() {
+    const result = await deletePost(id!, token!);
+    if (result) {
+      getPosts();
+      getUserData(token!);
+      navigate('/');
+    }
+  }
 
   return (
     <div className='post-view'>
@@ -23,7 +39,7 @@ const ViewPost = ({ posts, token, userData }: ViewPostProps) => {
         <p>{post?.__v} view(s)</p>
         {post?.author._id === userData?._id && (
           <div>
-            <button>DELETE</button>
+            <button onClick={() => handleDelete()}>DELETE</button>
             <Link to={`/${post?._id}/edit`}>EDIT</Link>
           </div>
         )}

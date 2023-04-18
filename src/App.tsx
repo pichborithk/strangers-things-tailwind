@@ -68,7 +68,15 @@ function App() {
         />
         <Route
           path='/:id'
-          element={<ViewPost posts={posts} token={token} userData={userData} />}
+          element={
+            <ViewPost
+              posts={posts}
+              token={token}
+              userData={userData}
+              getPosts={getPosts}
+              getUserData={getUserData}
+            />
+          }
         />
         <Route path='*' element={<Navigate to='/' />} />
       </Routes>
