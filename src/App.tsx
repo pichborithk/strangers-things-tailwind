@@ -1,5 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Home, Navbar, Profile, Registration, SignIn } from './components';
+import {
+  Home,
+  Navbar,
+  NewPost,
+  Profile,
+  Registration,
+  SignIn,
+} from './components';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Post, UserData } from './types/types';
 import { fetchAllPosts, fetchUserData } from './api/auth';
@@ -45,6 +52,7 @@ function App() {
           element={<SignIn setToken={setToken} token={token} />}
         />
         <Route path='/register' element={<Registration />} />
+        <Route path='/new' element={<NewPost />} />
         <Route path='*' element={<Navigate to='/' />} />
       </Routes>
     </>

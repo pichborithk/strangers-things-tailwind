@@ -249,3 +249,82 @@
     }
   }
 }
+
+.post-form {
+  @include display-flex;
+  flex-direction: column;
+  gap: 30px;
+
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.4);
+
+  width: 600px;
+  padding: 60px 0;
+
+  > .input-fieldset {
+    position: relative;
+
+    > label {
+      position: absolute;
+      left: 17px;
+      color: rgb(127, 127, 127);
+    }
+
+    &:focus-within {
+      > label {
+        color: black;
+        transform: translate(-5px, -25px);
+        background-color: #fff;
+        transition: all 0.3s ease-in-out;
+        font-size: 1rem;
+        padding: 5px 10px;
+      }
+    }
+
+    > input {
+      border-radius: 10px;
+      border: 1px solid #747474;
+
+      width: 100%;
+      padding: 15px 15px;
+
+      font-size: 1.2rem;
+    }
+  }
+
+  > fieldset {
+    @include display-flex(center, flex-start);
+    border: none;
+
+    width: 75%;
+
+    > label {
+      font-size: 1.2rem;
+      pointer-events: none;
+    }
+
+    > .check-box {
+      margin: 0 15px;
+    }
+  }
+
+  > button {
+    border-radius: 10px;
+    background-color: transparent;
+    border: 1px solid $primary-color;
+
+    color: $primary-color;
+    font-size: 1.2rem;
+
+    padding: 10px 15px;
+    width: 75%;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: $primary-color;
+      color: #fff;
+    }
+  }
+}
