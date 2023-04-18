@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import { NavbarProps } from '../types/types';
 
-const Navbar = ({ isLogin, setIsLogin, setToken }: NavbarProps) => {
+const Navbar = ({ token, setToken, setUserData }: NavbarProps) => {
   function handleSignOut(): void {
-    setIsLogin(false);
     setToken(null);
     localStorage.clear();
+    setUserData(null);
   }
 
   return (
@@ -14,7 +14,7 @@ const Navbar = ({ isLogin, setIsLogin, setToken }: NavbarProps) => {
       <div className='nav-link'>
         <Link to='/'>Home</Link>
         <Link to='/posts'>Posts</Link>
-        {isLogin ? (
+        {token ? (
           <>
             <Link to='/profile'>Profile</Link>
             <Link to='/' onClick={handleSignOut}>
