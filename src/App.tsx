@@ -22,11 +22,14 @@ function App() {
 
   return (
     <>
-      <Navbar isLogin={isLogin} />
+      <Navbar isLogin={isLogin} setIsLogin={setIsLogin} setToken={setToken} />
       <Routes>
-        <Route index element={<Home token={token} setToken={setToken} />} />
+        <Route index element={<Home />} />
         <Route path='/posts' element={<Posts posts={posts} />} />
-        <Route path='/signin' element={<SignIn setToken={setToken} />} />
+        <Route
+          path='/signin'
+          element={<SignIn setToken={setToken} setIsLogin={setIsLogin} />}
+        />
         <Route path='/register' element={<Registration />} />
         <Route path='*' element={<Navigate to='/' />} />
       </Routes>

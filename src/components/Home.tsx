@@ -6,9 +6,8 @@ type HomeProps = {
   setToken: Dispatch<SetStateAction<string | null>>;
 };
 
-const Home = ({ token, setToken }: HomeProps) => {
-  const navigate = useNavigate();
-  console.log(token);
+const Home = () => {
+  // const navigate = useNavigate();
 
   // useEffect(() => {
   //   if (!token) navigate('/signin');
@@ -16,15 +15,7 @@ const Home = ({ token, setToken }: HomeProps) => {
 
   return (
     <div className='home'>
-      <p>{token}</p>
-      <button
-        onClick={() => {
-          setToken(null);
-          localStorage.clear();
-        }}
-      >
-        Sign Out
-      </button>
+      <p>Welcome to Stranger's Things</p>
     </div>
   );
 };

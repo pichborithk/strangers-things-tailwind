@@ -1,10 +1,19 @@
+import { Dispatch, SetStateAction } from 'react';
 import { Link } from 'react-router-dom';
 
 type NavbarProps = {
   isLogin: boolean;
+  setIsLogin: Dispatch<SetStateAction<boolean>>;
+  setToken: Dispatch<SetStateAction<string | null>>;
 };
 
-const Navbar = ({ isLogin }: NavbarProps) => {
+const Navbar = ({ isLogin, setIsLogin, setToken }: NavbarProps) => {
+  function handleSignOut(): void {
+    setIsLogin(false);
+    setToken(null);
+    localStorage.clear();
+  }
+
   return (
     <nav className='navbar'>
       <p>Stranger's Things</p>
@@ -14,7 +23,9 @@ const Navbar = ({ isLogin }: NavbarProps) => {
         {isLogin ? (
           <>
             <Link to='/profile'>Profile</Link>
-            <Link to='/'></Link>
+            <Link to='/' onClick={handleSignOut}>
+              Sign Out
+            </Link>
           </>
         ) : (
           <Link to='/signin'>Sign In</Link>
