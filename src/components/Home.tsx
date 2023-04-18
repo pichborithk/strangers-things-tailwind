@@ -13,7 +13,11 @@ const Home = ({ token }: HomeProps) => {
     if (!token) navigate('/signin');
   }, []);
 
-  return <div>Home</div>;
+  return (
+    <div>
+      <p>{token}</p>
+    </div>
+  );
 };
 
 export default Home;
