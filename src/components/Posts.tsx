@@ -1,8 +1,4 @@
-import { Post } from '../types/types';
-
-type PostsProps = {
-  posts: Post[];
-};
+import { PostsProps } from '../types/types';
 
 const Posts = ({ posts }: PostsProps) => {
   console.log(posts);

@@ -1,11 +1,7 @@
-import { Dispatch, FormEvent, SetStateAction, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../api/auth';
-
-type SignInProps = {
-  setToken: Dispatch<SetStateAction<string | null>>;
-  setIsLogin: Dispatch<SetStateAction<boolean>>;
-};
+import { SignInProps } from '../types/types';
 
 const SignIn = ({ setToken, setIsLogin }: SignInProps) => {
   const navigate = useNavigate();
