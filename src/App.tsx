@@ -23,7 +23,7 @@ function App() {
     setPosts(result);
   }
 
-  async function getUserData(token: string) {
+  async function getUserData(token: string): Promise<void> {
     const result = await fetchUserData(token);
     setUserData(result);
   }
@@ -52,7 +52,16 @@ function App() {
           element={<SignIn setToken={setToken} token={token} />}
         />
         <Route path='/register' element={<Registration />} />
-        <Route path='/new' element={<NewPost />} />
+        <Route
+          path='/new'
+          element={
+            <NewPost
+              token={token}
+              getPosts={getPosts}
+              getUserData={getUserData}
+            />
+          }
+        />
         <Route path='*' element={<Navigate to='/' />} />
       </Routes>
     </>
