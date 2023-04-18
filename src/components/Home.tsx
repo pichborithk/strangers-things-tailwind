@@ -1,10 +1,18 @@
 import { HomeProps } from '../types/types';
 
-const Home = ({ token, userData }: HomeProps) => {
+const Home = ({ posts }: HomeProps) => {
   return (
-    <div className='home'>
-      <h1>Welcome to Stranger's Things</h1>
-      {token && userData && <h2>{`Logged in as ${userData.username}`}</h2>}
+    <div className='posts'>
+      {posts.map((post) => (
+        <div className='post' key={post._id}>
+          <h2>{post.title}</h2>
+          <p>{post.__v} view(s)</p>
+          <span>{post.description}</span>
+          <p>{post.price}</p>
+          <p>{post.author.username}</p>
+          <p>{post.location}</p>
+        </div>
+      ))}
     </div>
   );
 };
