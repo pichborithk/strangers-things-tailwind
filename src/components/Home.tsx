@@ -10,9 +10,9 @@ const Home = ({ token, setToken }: HomeProps) => {
   const navigate = useNavigate();
   console.log(token);
 
-  useEffect(() => {
-    if (!token) navigate('/signin');
-  }, [token]);
+  // useEffect(() => {
+  //   if (!token) navigate('/signin');
+  // }, [token]);
 
   return (
     <div className='home'>
