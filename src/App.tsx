@@ -42,7 +42,10 @@ function App() {
     <>
       <Navbar token={token} setToken={setToken} setUserData={setUserData} />
       <Routes>
-        <Route index element={<Home posts={posts} />} />
+        <Route
+          index
+          element={<Home posts={posts} userData={userData} token={token} />}
+        />
         <Route
           path='/profile'
           element={<Profile token={token} userData={userData} />}
