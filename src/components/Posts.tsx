@@ -1,7 +1,24 @@
-import React from 'react';
+import { Post } from '../types/types';
 
-const Posts = () => {
-  return <div>Posts</div>;
+type PostsProps = {
+  posts: Post[];
+};
+
+const Posts = ({ posts }: PostsProps) => {
+  console.log(posts);
+  return (
+    <div className='posts'>
+      {posts.map((post) => (
+        <div className='post' key={post._id}>
+          <h2>{post.title}</h2>
+          <span>{post.description}</span>
+          <p>{post.price}</p>
+          <p>{post.author.username}</p>
+          <p>{post.location}</p>
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default Posts;
