@@ -23,7 +23,7 @@ const Navbar = ({ token, setToken, setUserData }: NavbarProps) => {
         ) : (
           <>
             <Link to='/register'>SIGN UP</Link>
-            <Link to='/signin'>SIGN In</Link>
+            <Link to='/signin'>SIGN IN</Link>
           </>
         )}
       </div>
