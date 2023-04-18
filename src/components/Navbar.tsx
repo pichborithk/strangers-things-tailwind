@@ -13,7 +13,6 @@ const Navbar = ({ token, setToken, setUserData }: NavbarProps) => {
       <p>Stranger's Things</p>
       <div className='nav-link'>
         <Link to='/'>Home</Link>
-        <Link to='/posts'>Posts</Link>
         {token ? (
           <>
             <Link to='/profile'>Profile</Link>
@@ -22,7 +21,10 @@ const Navbar = ({ token, setToken, setUserData }: NavbarProps) => {
             </Link>
           </>
         ) : (
-          <Link to='/signin'>Sign In</Link>
+          <>
+            <Link to='/register'>Sign Up</Link>
+            <Link to='/signin'>Sign In</Link>
+          </>
         )}
       </div>
     </nav>

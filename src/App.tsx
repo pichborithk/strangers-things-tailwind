@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Home, Navbar, Posts, Registration, SignIn } from './components';
+import { Home, Navbar, Profile, Registration, SignIn } from './components';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Post, UserData } from './types/types';
 import { fetchAllPosts, fetchUserData } from './api/auth';
@@ -35,8 +35,11 @@ function App() {
     <>
       <Navbar token={token} setToken={setToken} setUserData={setUserData} />
       <Routes>
-        <Route index element={<Home token={token} userData={userData} />} />
-        <Route path='/posts' element={<Posts posts={posts} />} />
+        <Route index element={<Home posts={posts} />} />
+        <Route
+          path='/profile'
+          element={<Profile token={token} userData={userData} />}
+        />
         <Route
           path='/signin'
           element={<SignIn setToken={setToken} token={token} />}

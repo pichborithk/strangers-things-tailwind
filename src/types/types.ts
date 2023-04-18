@@ -7,6 +7,8 @@ export type Post = {
   price: string;
   _id: string;
   author: UserInfo;
+  __v: number;
+  messages: { _id: string; fromUser: UserInfo; content: string }[];
 };
 
 export type UserData = {
@@ -23,6 +25,7 @@ export type Message = {
   _id: string;
   post: { _id: string; title: string };
   fromUser: UserInfo;
+  content: string;
 };
 
 export type UserAuth = {
@@ -40,7 +43,7 @@ export type Error = {
   message: string;
 };
 
-export type HomeProps = {
+export type ProfileProps = {
   token: string | null;
   userData: UserData | null;
 };
@@ -51,7 +54,7 @@ export type NavbarProps = {
   setUserData: Dispatch<SetStateAction<UserData | null>>;
 };
 
-export type PostsProps = {
+export type HomeProps = {
   posts: Post[];
 };
 
