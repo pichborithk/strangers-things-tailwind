@@ -70,6 +70,8 @@ export type NavbarProps = {
 
 export type HomeProps = {
   posts: Post[];
+  userData: UserData | null;
+  token: string | null;
 };
 
 export type SignInProps = {
@@ -81,4 +83,10 @@ export type NewPostProps = {
   token: string | null;
   getPosts: () => Promise<void>;
   getUserData: (token: string) => Promise<void>;
+};
+
+export type PostCardProps = {
+  post: Post;
+  isOwner: boolean;
+  token: string | null;
 };

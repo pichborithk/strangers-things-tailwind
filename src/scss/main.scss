@@ -270,7 +270,7 @@
     height: 100%;
     width: 100%;
 
-    > .post {
+    > .post-card {
       width: 100%;
       padding: 15px 40px;
 
@@ -283,6 +283,20 @@
 
       > span {
         color: #6f6f6f;
+      }
+
+      > a {
+        display: inline-block;
+        padding: 5px 10px;
+        color: $primary-color;
+
+        border: 2px solid $primary-color;
+        border-radius: 5px;
+
+        &:hover {
+          background-color: $primary-color;
+          color: #fff;
+        }
       }
     }
   }
