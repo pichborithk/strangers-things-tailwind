@@ -282,6 +282,15 @@
       }
     }
 
+    > label.focus {
+      color: black;
+      transform: translate(-5px, -25px);
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+      font-size: 1rem;
+      padding: 5px 10px;
+    }
+
     > input {
       border-radius: 10px;
       border: 1px solid #747474;

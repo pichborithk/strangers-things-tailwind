@@ -1,4 +1,10 @@
-import { Post, TokenFetch, UserAuth } from '../types/types';
+import {
+  MakeNewPost,
+  NewPost,
+  Post,
+  TokenFetch,
+  UserAuth,
+} from '../types/types';
 
 const BASE_URL = `${import.meta.env.VITE_API_URL}/${
   import.meta.env.VITE_COHORT_NAME
@@ -68,5 +74,25 @@ export async function fetchUserData(token: string) {
   } catch (error) {
     console.error(error);
     return null;
+  }
+}
+
+export async function makePost(
+  dataObj: NewPost,
+  token: string
+): Promise<MakeNewPost | void> {
+  try {
+    const response = await fetch(`${BASE_URL}/posts`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ post: dataObj }),
+    });
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error);
   }
 }

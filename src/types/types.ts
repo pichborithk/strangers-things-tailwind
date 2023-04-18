@@ -9,6 +9,7 @@ export type Post = {
   author: UserInfo;
   __v: number;
   messages: { _id: string; fromUser: UserInfo; content: string }[];
+  willDeliver: boolean;
 };
 
 export type UserData = {
@@ -38,6 +39,19 @@ export type TokenFetch = {
   data: { token: string; message: string } | null;
 };
 
+export type NewPost = {
+  title: string;
+  description: string;
+  price: string;
+  location?: string;
+  willDeliver: boolean;
+};
+
+export type MakeNewPost = {
+  error: Error | null;
+  data: Post | null;
+};
+
 export type Error = {
   name: string;
   message: string;
@@ -61,4 +75,10 @@ export type HomeProps = {
 export type SignInProps = {
   setToken: Dispatch<SetStateAction<string | null>>;
   token: string | null;
+};
+
+export type NewPostProps = {
+  token: string | null;
+  getPosts: () => Promise<void>;
+  getUserData: (token: string) => Promise<void>;
 };
