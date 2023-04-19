@@ -10,6 +10,7 @@ export type Post = {
   __v: number;
   messages: { _id: string; fromUser: UserInfo; content: string }[];
   willDeliver: boolean;
+  active: boolean;
 };
 
 export type UserData = {
@@ -24,7 +25,7 @@ export type UserInfo = {
 
 export type Message = {
   _id: string;
-  post: { _id: string; title: string };
+  post?: { _id: string; title: string };
   fromUser: UserInfo;
   content: string;
 };
