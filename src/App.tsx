@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import {
+  EditPost,
   Home,
   Navbar,
   NewPost,
@@ -80,6 +81,7 @@ function App() {
           }
         >
           <Route index element={<PostMessages />} />
+          <Route path='edit' element={<EditPost />} />
         </Route>
         <Route path='*' element={<Navigate to='/' />} />
       </Routes>

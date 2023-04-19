@@ -112,3 +112,7 @@ export type PostMessagesContext = {
   messagesList: Message[];
   userData: UserData | null;
 };
+
+export type EditPostContext = {
+  post: Post;
+};

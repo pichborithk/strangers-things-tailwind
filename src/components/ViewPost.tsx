@@ -1,7 +1,7 @@
 import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
 import { Message, ViewPostProps } from '../types/types';
-import { FormEvent, useEffect, useState } from 'react';
-import { deletePost, postMessage } from '../api/auth';
+import { useEffect, useState } from 'react';
+import { deletePost } from '../api/auth';
 
 const ViewPost = ({
   posts,
@@ -16,7 +16,10 @@ const ViewPost = ({
   const post = posts ? posts.find((post) => post._id === id) : undefined;
 
   useEffect(() => {
-    if (!token || !posts || !userData) return navigate('/');
+    if (!token || !posts || !userData) {
+      navigate('/');
+      return;
+    }
     if (post?.author._id === userData?._id) {
       const newMessagesList = userData!.posts!.find(
         (userPost) => userPost._id === id
