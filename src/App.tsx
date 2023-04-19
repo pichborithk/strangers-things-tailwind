@@ -3,6 +3,7 @@ import {
   Home,
   Navbar,
   NewPost,
+  PostMessages,
   Profile,
   Registration,
   SignIn,
@@ -77,7 +78,9 @@ function App() {
               getUserData={getUserData}
             />
           }
-        />
+        >
+          <Route index element={<PostMessages />} />
+        </Route>
         <Route path='*' element={<Navigate to='/' />} />
       </Routes>
     </>
