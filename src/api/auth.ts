@@ -118,3 +118,26 @@ export async function deletePost(id: string, token: string): Promise<boolean> {
     return false;
   }
 }
+
+export async function postMessage(id: string, token: string, content: string) {
+  try {
+    const response = await fetch(`${BASE_URL}/posts/${id}/messages`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ message: { content } }),
+    });
+    const result = await response.json();
+    if (result.error) {
+      throw result.error;
+    } else {
+      console.log(result.data);
+      return true;
+    }
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+}

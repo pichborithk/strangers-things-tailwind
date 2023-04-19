@@ -17,7 +17,7 @@ const Navbar = ({ token, setToken, setUserData }: NavbarProps) => {
           <>
             <Link to='/profile'>PROFILE</Link>
             <Link to='/' onClick={handleSignOut}>
-              Sign Out
+              SIGN OUT
             </Link>
           </>
         ) : (

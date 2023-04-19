@@ -12,9 +12,12 @@
 // utilities (margin, padding, opacity, etc)
 
 #root {
-  @include display-flex;
+  @include display-flex(center, flex-start);
+  flex-direction: column;
+
   min-height: 100vh;
   background-color: #efefef;
+  padding-top: 80px;
 }
 
 .navbar {
@@ -48,6 +51,7 @@
   border-radius: 25px;
   border: 1px solid rgba(0, 0, 0, 0.4);
 
+  margin-top: 160px;
   height: 500px;
   overflow: hidden;
 
@@ -142,6 +146,7 @@
   border-radius: 25px;
   box-shadow: 0px 0px 6px 0px rgba(90, 89, 89, 0.4);
 
+  margin-top: 160px;
   height: 500px;
   overflow: hidden;
 
@@ -227,7 +232,7 @@
 .home {
   height: 100%;
   width: 100%;
-  padding: 100px 10% 40px;
+  padding: 20px 10% 40px;
 
   form {
     @include display-flex;
@@ -391,9 +396,17 @@
 }
 
 .post-view {
+  @include display-flex;
+  flex-direction: column;
+  gap: 5px;
+
+  margin-top: 20px;
+  width: 75%;
   > .post {
     width: 100%;
     padding: 15px 40px;
+
+    background-color: #fff;
 
     border-radius: 5px;
     box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.4);
@@ -436,6 +449,43 @@
           background-color: $primary-color;
           color: #fff;
         }
+      }
+    }
+  }
+
+  > .messages-form {
+    @include display-flex;
+    width: 100%;
+
+    > fieldset {
+      @include display-flex;
+      width: 100%;
+      padding: 5px 15px;
+      border: none;
+
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.4);
+
+      > input {
+        flex: 1;
+
+        font-size: 1.2rem;
+        border: 2px solid #c7c7c7;
+        border-radius: 5px;
+
+        padding: 10px 20px;
+
+        &:focus {
+          border: 2px solid $primary-color;
+        }
+      }
+
+      > button {
+        background-color: transparent;
+        border: none;
+        font-size: 1.2rem;
+        padding: 5px 15px;
       }
     }
   }
