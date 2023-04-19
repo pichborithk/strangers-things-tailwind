@@ -17,7 +17,7 @@ const ViewPost = ({
   const [messagesList, setMessagesList] = useState<Message[]>([]);
 
   useEffect(() => {
-    if (!token) navigate('/');
+    if (!token || !posts || !userData) return navigate('/');
     const currentPost = posts.find((post) => post._id === id);
     setPost(currentPost!);
     if (currentPost?.author._id === userData?._id) {
