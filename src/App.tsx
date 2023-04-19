@@ -81,7 +81,10 @@ function App() {
           }
         >
           <Route index element={<PostMessages />} />
-          <Route path='edit' element={<EditPost />} />
+          <Route
+            path='edit'
+            element={<EditPost getPosts={getPosts} getUserData={getUserData} />}
+          />
         </Route>
         <Route path='*' element={<Navigate to='/' />} />
       </Routes>
