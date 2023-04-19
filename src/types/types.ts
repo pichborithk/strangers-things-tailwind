@@ -115,4 +115,12 @@ export type PostMessagesContext = {
 
 export type EditPostContext = {
   post: Post;
+  token: string | null;
+  id?: string;
+  setIsEditing: Dispatch<SetStateAction<boolean>>;
+};
+
+export type EditPostProps = {
+  getPosts: () => Promise<void>;
+  getUserData: (token: string) => Promise<void>;
 };

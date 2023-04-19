@@ -13,6 +13,7 @@ const ViewPost = ({
   const navigate = useNavigate();
   const { id } = useParams();
   const [messagesList, setMessagesList] = useState<Message[]>([]);
+  const [isEditing, setIsEditing] = useState(false);
   const post = posts ? posts.find((post) => post._id === id) : undefined;
 
   useEffect(() => {
@@ -37,6 +38,11 @@ const ViewPost = ({
     }
   }
 
+  function handleEdit() {
+    setIsEditing(true);
+    navigate(`/${post?._id}/edit`);
+  }
+
   return (
     <div className='post-view'>
       <div className='post'>
@@ -48,14 +54,26 @@ const ViewPost = ({
         <p>{post?.__v} view(s)</p>
         {post?.author._id === userData?._id && (
           <div>
-            <button onClick={() => handleDelete()} type='button'>
+            <button
+              onClick={() => handleDelete()}
+              type='button'
+              className='delete-btn'
+            >
               DELETE
             </button>
-            <Link to={`/${post?._id}/edit`}>EDIT</Link>
+            <button
+              onClick={() => handleEdit()}
+              className={isEditing ? 'edit-btn active' : 'edit-btn'}
+              disabled={isEditing}
+            >
+              {isEditing ? 'EDITING' : 'EDIT'}
+            </button>
           </div>
         )}
       </div>
-      <Outlet context={{ token, id, post, messagesList, userData }} />
+      <Outlet
+        context={{ token, id, post, messagesList, userData, setIsEditing }}
+      />
     </div>
   );
 };

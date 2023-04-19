@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { FormEvent, useEffect, useRef, useState } from 'react';
 import { useNavigate, useOutletContext } from 'react-router-dom';
-import { EditPostContext } from '../types/types';
+import { EditPostContext, EditPostProps } from '../types/types';
+import { updatePost } from '../api/auth';
 
-const EditPost = () => {
+const EditPost = ({ getUserData, getPosts }: EditPostProps) => {
   const navigate = useNavigate();
-  const { post } = useOutletContext<EditPostContext>();
+  const { id, post, token, setIsEditing } = useOutletContext<EditPostContext>();
 
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
@@ -23,11 +24,30 @@ const EditPost = () => {
     setLocation(post.location);
   }, []);
 
+  async function handleSubmit(event: FormEvent) {
+    event.preventDefault();
+
+    const dataObj = location
+      ? {
+          title,
+          description,
+          price,
+          location,
+          willDeliver: deliverRef.current!.checked,
+        }
+      : { title, description, price, willDeliver: deliverRef.current!.checked };
+
+    const result = await updatePost(id!, token!, dataObj);
+    if (result) {
+      getPosts();
+      getUserData(token!);
+      setIsEditing(false);
+      navigate(`/${id}`);
+    }
+  }
+
   return (
-    <form
-      className='post-form'
-      // onSubmit={handleSubmit}
-    >
+    <form className='post-form' onSubmit={handleSubmit}>
       <h1>Add New Post</h1>
       <fieldset className='input-fieldset'>
         <label htmlFor='title' className={title ? 'focus' : ''}>
