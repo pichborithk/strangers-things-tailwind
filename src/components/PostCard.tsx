@@ -3,7 +3,7 @@ import { PostCardProps } from '../types/types';
 
 const PostCard = ({ post, token, isOwner }: PostCardProps) => {
   return (
-    <div className='post-card' key={post._id}>
+    <div className='post-card'>
       <h2>{post.title}</h2>
       <p>{post.__v} view(s)</p>
       <span>{post.description}</span>

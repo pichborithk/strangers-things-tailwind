@@ -12,9 +12,14 @@ const Home = ({ posts, token, userData }: HomeProps) => {
       <div className='posts'>
         {posts.map((post) =>
           post.author._id === userData?._id ? (
-            <PostCard post={post} token={token} isOwner={true} />
+            <PostCard post={post} token={token} isOwner={true} key={post._id} />
           ) : (
-            <PostCard post={post} token={token} isOwner={false} />
+            <PostCard
+              post={post}
+              token={token}
+              isOwner={false}
+              key={post._id}
+            />
           )
         )}
       </div>
