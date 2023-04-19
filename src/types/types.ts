@@ -11,6 +11,7 @@ export type Post = {
   messages: { _id: string; fromUser: UserInfo; content: string }[];
   willDeliver: boolean;
   active: boolean;
+  isAuthor: boolean;
 };
 
 export type UserData = {
@@ -102,4 +103,12 @@ export type ViewPostProps = {
   token: string | null;
   getPosts: () => Promise<void>;
   getUserData: (token: string) => Promise<void>;
+};
+
+export type PostMessagesContext = {
+  token: string | null;
+  id?: string;
+  post?: Post;
+  messagesList: Message[];
+  userData: UserData | null;
 };
