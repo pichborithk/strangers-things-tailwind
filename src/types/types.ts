@@ -25,7 +25,11 @@ export type UserInfo = {
 
 export type Message = {
   _id: string;
-  post?: { _id: string; title: string };
+  post?: {
+    _id: string;
+    title: string;
+    author: { _id: string; username: string };
+  };
   fromUser: UserInfo;
   content: string;
 };
