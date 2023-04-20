@@ -1,13 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { ProfileProps } from '../types/types';
-import { useEffect } from 'react';
 
 const Profile = ({ token, userData }: ProfileProps) => {
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!token || !userData) return navigate('/');
-  }, [token, userData]);
+  if (!token || !userData) return <></>;
 
   return (
     <div className='profile'>
