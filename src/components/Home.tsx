@@ -9,9 +9,14 @@ const Home = ({ posts, token, userData }: HomeProps) => {
 
   useEffect(() => {
     if (!posts) return;
-    const newPosts = posts.filter((post) =>
-      post.title.toLowerCase().includes(keyword)
+    const newPosts = posts.filter(
+      (post) => post.title.toLowerCase().includes(keyword) || keyword === ''
     );
+    newPosts.sort((prevPost, nextPost) => {
+      const prevPostDate = new Date(prevPost.updatedAt);
+      const nextPostDate = new Date(nextPost.updatedAt);
+      return nextPostDate.getTime() - prevPostDate.getTime();
+    });
     setPostsFiltered(newPosts);
   }, [keyword, posts]);
 
