@@ -36,10 +36,10 @@ const EditPost = ({ getUserData, getPosts }: EditPostProps) => {
         }
       : { title, description, price, willDeliver: deliverRef.current!.checked };
 
-    const result = await updatePost(id!, token!, dataObj);
+    const result = await updatePost(id!, token, dataObj);
     if (result) {
       getPosts();
-      getUserData(token!);
+      getUserData(token);
       setIsEditing(false);
       navigate(`/${id}`);
     }

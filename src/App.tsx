@@ -11,15 +11,20 @@ import {
   ViewPost,
 } from './components';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { Post, UserData } from './types/types';
+import { Post } from './types/types';
 import { fetchAllPosts, fetchUserData } from './api/auth';
+import { UserData } from './types/classes';
 
-const initialToken = localStorage.getItem('TOKEN');
+const initialToken: string = localStorage.getItem('TOKEN')
+  ? localStorage.getItem('TOKEN')!
+  : '';
+
+export const initialUserData = new UserData();
 
 function App() {
-  const [token, setToken] = useState<string | null>(initialToken);
+  const [token, setToken] = useState(initialToken);
   const [posts, setPosts] = useState<Post[]>([]);
-  const [userData, setUserData] = useState<UserData | null>(null);
+  const [userData, setUserData] = useState(initialUserData);
 
   async function getPosts(): Promise<void> {
     const result = await fetchAllPosts();
@@ -34,7 +39,7 @@ function App() {
   useEffect(() => {
     getPosts();
     if (!token) {
-      setUserData(null);
+      setUserData(initialUserData);
       return;
     } else {
       getUserData(token);

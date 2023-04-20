@@ -13,9 +13,9 @@ const Profile = ({ token, userData }: ProfileProps) => {
 
   return (
     <div className='profile'>
-      <h1>Welcome {userData?.username}</h1>
+      <h1>Welcome {userData.username}</h1>
       <div className='active-posts'>
-        {userData?.posts.map((post) => {
+        {userData.posts.map((post) => {
           if (post.active)
             return (
               <div
@@ -33,7 +33,7 @@ const Profile = ({ token, userData }: ProfileProps) => {
         })}
       </div>
       <div className='inactive-posts'>
-        {userData?.posts.map((post) => {
+        {userData.posts.map((post) => {
           if (!post.active)
             return (
               <div className='user-post' key={post._id}>
@@ -47,7 +47,7 @@ const Profile = ({ token, userData }: ProfileProps) => {
         })}
       </div>
       <div className='user-messages'>
-        {userData?.messages.map((msg) => (
+        {userData.messages.map((msg) => (
           <div
             key={msg._id}
             className='message'
