@@ -12,6 +12,7 @@ export type Post = {
   willDeliver: boolean;
   active: boolean;
   isAuthor: boolean;
+  updatedAt: string;
 };
 
 export type UserData = {
