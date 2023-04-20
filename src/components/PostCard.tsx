@@ -4,15 +4,19 @@ import { PostCardProps } from '../types/types';
 const PostCard = ({ post, token, isOwner }: PostCardProps) => {
   return (
     <div className='post-card'>
-      <h2>{post.title}</h2>
-      <p>{post.__v} view(s)</p>
-      <span>{post.description}</span>
-      <p>{post.price}</p>
-      <p>{post.author.username}</p>
-      <p>{post.location}</p>
-      {token && (
-        <Link to={`/${post._id}`}>{isOwner ? 'View' : 'Send Message'}</Link>
-      )}
+      <div>
+        <h2>{post.title}</h2>
+        <span>{post.description}</span>
+        <p>By: {post.author.username}</p>
+        <p>{post.__v} view(s)</p>
+      </div>
+      <div className='right-side'>
+        <h2>{post.price}</h2>
+        <p>{post.location}</p>
+        {token && (
+          <Link to={`/${post._id}`}>{isOwner ? 'View' : 'Send Message'}</Link>
+        )}
+      </div>
     </div>
   );
 };
