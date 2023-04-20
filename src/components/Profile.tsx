@@ -1,9 +1,15 @@
 import { useNavigate } from 'react-router-dom';
 import { ProfileProps } from '../types/types';
+import { useEffect } from 'react';
 
 const Profile = ({ token, userData }: ProfileProps) => {
   const navigate = useNavigate();
-  if (!token || !userData) return <></>;
+
+  useEffect(() => {
+    if (!token) return navigate('/signin');
+  }, []);
+
+  if (!userData) return <></>;
 
   return (
     <div className='profile'>
