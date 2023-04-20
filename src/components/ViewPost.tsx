@@ -26,7 +26,11 @@ const ViewPost = ({
     }
   }, [post]);
 
-  if (!token || !posts || !userData) return <></>;
+  useEffect(() => {
+    if (!token) return navigate('/signin');
+  }, []);
+
+  if (!posts || !userData) return <></>;
 
   async function handleDelete() {
     const result = await deletePost(id!, token!);
