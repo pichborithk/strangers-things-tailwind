@@ -33,7 +33,7 @@ const SignIn = ({ setToken, token }: SignInProps) => {
   }
 
   useEffect(() => {
-    if (token) navigate('/');
+    if (token) return navigate('/');
   }, [token]);
 
   return (

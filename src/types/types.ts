@@ -118,6 +118,7 @@ export type EditPostContext = {
   token: string | null;
   id?: string;
   setIsEditing: Dispatch<SetStateAction<boolean>>;
+  isEditing: boolean;
 };
 
 export type EditPostProps = {

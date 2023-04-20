@@ -45,7 +45,7 @@ const NewPost = ({ token, getPosts, getUserData }: NewPostProps) => {
   }
 
   useEffect(() => {
-    if (!token) navigate('/');
+    if (!token) return navigate('/');
   }, [token]);
 
   return (

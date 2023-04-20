@@ -1,4 +1,4 @@
-import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
+import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import { Message, ViewPostProps } from '../types/types';
 import { useEffect, useState } from 'react';
 import { deletePost } from '../api/auth';
@@ -17,17 +17,16 @@ const ViewPost = ({
   const post = posts ? posts.find((post) => post._id === id) : undefined;
 
   useEffect(() => {
-    if (!token || !posts || !userData) {
-      navigate('/');
-      return;
-    }
+    if (!post) return;
     if (post?.author._id === userData?._id) {
       const newMessagesList = userData!.posts!.find(
         (userPost) => userPost._id === id
       )!.messages;
       setMessagesList(newMessagesList);
     }
-  }, [token, id]);
+  }, [post]);
+
+  if (!token || !posts || !userData) return <></>;
 
   async function handleDelete() {
     const result = await deletePost(id!, token!);
@@ -72,7 +71,15 @@ const ViewPost = ({
         )}
       </div>
       <Outlet
-        context={{ token, id, post, messagesList, userData, setIsEditing }}
+        context={{
+          token,
+          id,
+          post,
+          messagesList,
+          userData,
+          isEditing,
+          setIsEditing,
+        }}
       />
     </div>
   );

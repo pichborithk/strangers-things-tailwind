@@ -5,7 +5,8 @@ import { updatePost } from '../api/auth';
 
 const EditPost = ({ getUserData, getPosts }: EditPostProps) => {
   const navigate = useNavigate();
-  const { id, post, token, setIsEditing } = useOutletContext<EditPostContext>();
+  const { id, post, token, isEditing, setIsEditing } =
+    useOutletContext<EditPostContext>();
 
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
@@ -14,10 +15,8 @@ const EditPost = ({ getUserData, getPosts }: EditPostProps) => {
   const deliverRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (!post) {
-      navigate('/');
-      return;
-    }
+    if (!isEditing) return navigate(`/${id}`);
+
     setTitle(post.title);
     setDescription(post.description);
     setPrice(post.price);
