@@ -14,7 +14,7 @@ const Profile = ({ token, userData }: ProfileProps) => {
   return (
     <div className='profile'>
       <h1>Welcome {userData?.username}</h1>
-      <div className='active-post'>
+      <div className='active-posts'>
         {userData?.posts.map((post) => {
           if (post.active)
             return (
@@ -32,7 +32,7 @@ const Profile = ({ token, userData }: ProfileProps) => {
             );
         })}
       </div>
-      <div className='inactive-post'>
+      <div className='inactive-posts'>
         {userData?.posts.map((post) => {
           if (!post.active)
             return (
