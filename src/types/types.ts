@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
+import { UserData } from './classes';
 
 export type Post = {
   title: string;
@@ -15,10 +16,10 @@ export type Post = {
   updatedAt: string;
 };
 
-export type UserData = {
-  posts: Post[];
-  messages: Message[];
-} & UserInfo;
+// export type UserData = {
+//   posts: Post[];
+//   messages: Message[];
+// } & UserInfo;
 
 export type UserInfo = {
   username: string;
@@ -65,29 +66,29 @@ export type Error = {
 };
 
 export type ProfileProps = {
-  token: string | null;
-  userData: UserData | null;
+  token: string;
+  userData: UserData;
 };
 
 export type NavbarProps = {
-  token: string | null;
-  setToken: Dispatch<SetStateAction<string | null>>;
-  setUserData: Dispatch<SetStateAction<UserData | null>>;
+  token: string;
+  setToken: Dispatch<SetStateAction<string>>;
+  setUserData: Dispatch<SetStateAction<UserData>>;
 };
 
 export type HomeProps = {
   posts: Post[];
-  userData: UserData | null;
-  token: string | null;
+  userData: UserData;
+  token: string;
 };
 
 export type SignInProps = {
-  setToken: Dispatch<SetStateAction<string | null>>;
+  setToken: Dispatch<SetStateAction<string>>;
   token: string | null;
 };
 
 export type NewPostProps = {
-  token: string | null;
+  token: string;
   getPosts: () => Promise<void>;
   getUserData: (token: string) => Promise<void>;
 };
@@ -95,28 +96,28 @@ export type NewPostProps = {
 export type PostCardProps = {
   post: Post;
   isOwner: boolean;
-  token: string | null;
+  token: string;
 };
 
 export type ViewPostProps = {
   posts: Post[];
-  userData: UserData | null;
-  token: string | null;
+  userData: UserData;
+  token: string;
   getPosts: () => Promise<void>;
   getUserData: (token: string) => Promise<void>;
 };
 
 export type PostMessagesContext = {
-  token: string | null;
+  token: string;
   id?: string;
-  post?: Post;
+  post: Post;
   messagesList: Message[];
-  userData: UserData | null;
+  userData: UserData;
 };
 
 export type EditPostContext = {
   post: Post;
-  token: string | null;
+  token: string;
   id?: string;
   setIsEditing: Dispatch<SetStateAction<boolean>>;
   isEditing: boolean;

@@ -36,7 +36,7 @@ const Home = ({ posts, token, userData }: HomeProps) => {
       </form>
       <div className='posts'>
         {postsFiltered.map((post) =>
-          post.author._id === userData?._id ? (
+          post.author._id === userData._id ? (
             <PostCard post={post} token={token} isOwner={true} key={post._id} />
           ) : (
             <PostCard

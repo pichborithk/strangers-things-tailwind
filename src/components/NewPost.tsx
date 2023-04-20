@@ -24,14 +24,14 @@ const NewPost = ({ token, getPosts, getUserData }: NewPostProps) => {
         }
       : { title, description, price, willDeliver: deliverRef.current!.checked };
     try {
-      const result = await makePost(dataObj, token!);
+      const result = await makePost(dataObj, token);
       if (result && result.error) {
         throw result.error;
       }
       if (result && result.data) {
         console.log(result.data);
         getPosts();
-        getUserData(token!);
+        getUserData(token);
         navigate('/');
       }
     } catch (error) {

@@ -10,13 +10,13 @@ const PostMessages = () => {
 
   async function handleSubmitMessage(event: FormEvent) {
     event.preventDefault();
-    const result = await postMessage(id!, token!, message);
+    const result = await postMessage(id!, token, message);
     if (result) setMessage('');
   }
 
   return (
     <>
-      {post?.author._id === userData?._id &&
+      {post.author._id === userData._id &&
         (messagesList.length ? (
           <h2>Messages For You</h2>
         ) : (
@@ -29,7 +29,7 @@ const PostMessages = () => {
             <p>{msg.content}</p>
           </div>
         ))}
-      {post?.author._id !== userData?._id && (
+      {post.author._id !== userData._id && (
         <form className='messages-form' onSubmit={handleSubmitMessage}>
           <fieldset>
             <input

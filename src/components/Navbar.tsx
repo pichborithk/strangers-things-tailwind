@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import { NavbarProps } from '../types/types';
+import { initialUserData } from '../App';
 
 const Navbar = ({ token, setToken, setUserData }: NavbarProps) => {
   function handleSignOut(): void {
-    setToken(null);
+    setToken('');
     localStorage.clear();
-    setUserData(null);
+    setUserData(initialUserData);
   }
 
   return (
