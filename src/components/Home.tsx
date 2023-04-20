@@ -1,16 +1,36 @@
 import { Link } from 'react-router-dom';
 import { HomeProps } from '../types/types';
 import PostCard from './PostCard';
+import { useEffect, useState } from 'react';
 
 const Home = ({ posts, token, userData }: HomeProps) => {
+  const [keyword, setKeyword] = useState('');
+  const [postsFiltered, setPostsFiltered] = useState(posts);
+
+  useEffect(() => {
+    if (!posts) return;
+    const newPosts = posts.filter((post) =>
+      post.title.toLowerCase().includes(keyword)
+    );
+    setPostsFiltered(newPosts);
+  }, [keyword, posts]);
+
+  // useEffect(() => {
+  //   console.log(postsFiltered);
+  // }, [postsFiltered]);
+
   return (
     <div className='home'>
       <form>
-        <input placeholder='Search' />
+        <input
+          placeholder='Search'
+          value={keyword}
+          onChange={(event) => setKeyword(event.target.value)}
+        />
         {token && <Link to='/new'>New Post</Link>}
       </form>
       <div className='posts'>
-        {posts.map((post) =>
+        {postsFiltered.map((post) =>
           post.author._id === userData?._id ? (
             <PostCard post={post} token={token} isOwner={true} key={post._id} />
           ) : (
