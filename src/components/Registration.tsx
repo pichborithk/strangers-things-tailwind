@@ -2,7 +2,7 @@ import { FormEvent, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import logo from '../asset/Join.png';
-import { registerUser } from '../api/auth';
+import { registerUser } from '../api/fetchAPI';
 import { useAppDispatch, useAppSelector } from '../app/store';
 import { setNotification } from '../app/tokenSlice';
 import { RegistrationProps } from '../types/types';

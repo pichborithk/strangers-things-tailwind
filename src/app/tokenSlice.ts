@@ -1,6 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { TokenFetch } from '../types/types';
-import { fetchTokenLogin } from '../api/auth';
+import { fetchTokenLogin } from '../api/fetchAPI';
 
 type InitialState = {
   loading: boolean;

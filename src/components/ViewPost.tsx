@@ -1,7 +1,7 @@
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import { Message, ViewPostProps } from '../types/types';
 import { useEffect, useState } from 'react';
-import { deletePost } from '../api/auth';
+import { deletePost } from '../api/fetchAPI';
 import { useAppDispatch } from '../app/store';
 import { getPosts } from '../app/postsSlice';
 import { getUserData } from '../app/userDataSlice';

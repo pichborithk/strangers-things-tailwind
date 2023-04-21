@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useRef, useState } from 'react';
 import { NewPostProps } from '../types/types';
-import { makePost } from '../api/auth';
+import { makePost } from '../api/fetchAPI';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../app/store';
 import { getPosts } from '../app/postsSlice';

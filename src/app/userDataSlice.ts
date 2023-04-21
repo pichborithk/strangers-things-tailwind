@@ -1,5 +1,5 @@
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { fetchUserData } from '../api/auth';
+import { fetchUserData } from '../api/fetchAPI';
 import { UserData } from '../types/types';
 
 const initialUserData = {

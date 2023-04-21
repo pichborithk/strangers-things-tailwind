@@ -1,7 +1,7 @@
 import { FormEvent, useEffect, useRef, useState } from 'react';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import { EditPostContext } from '../types/types';
-import { updatePost } from '../api/auth';
+import { updatePost } from '../api/fetchAPI';
 import { useAppDispatch } from '../app/store';
 import { getPosts } from '../app/postsSlice';
 import { getUserData } from '../app/userDataSlice';

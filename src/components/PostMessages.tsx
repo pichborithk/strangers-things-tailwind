@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { postMessage } from '../api/auth';
+import { postMessage } from '../api/fetchAPI';
 import { PostMessagesContext } from '../types/types';
 
 const PostMessages = () => {
