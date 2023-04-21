@@ -31,8 +31,10 @@ const PostMessages = () => {
         ))}
       {post.author._id !== userData._id && (
         <form className='messages-form' onSubmit={handleSubmitMessage}>
+          <h2>To: {post.author.username}</h2>
           <fieldset>
             <input
+              name='message'
               placeholder='Send a message'
               value={message}
               onChange={(event) => setMessage(event.target.value)}

@@ -134,7 +134,7 @@
   border: 1px solid rgba(0, 0, 0, 0.4);
 
   margin-top: 160px;
-  height: 500px;
+  height: 550px;
   overflow: hidden;
 
   > img {
@@ -153,6 +153,7 @@
 
     width: 500px;
     height: 100%;
+    padding-bottom: 15px;
 
     > span {
       position: absolute;
@@ -530,6 +531,7 @@
   margin-top: 20px;
   width: 75%;
   > .post {
+    @include display-flex(stretch, space-between);
     width: 100%;
     padding: 15px 40px;
 
@@ -538,63 +540,83 @@
     border-radius: 5px;
     box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.4);
 
-    > h2 {
-      margin-bottom: 10px;
-    }
-
-    > span {
-      color: #6f6f6f;
-    }
-
     > div {
-      @include display-flex(center, flex-start);
-      gap: 5px;
+      flex: 1;
 
-      > button {
+      > h2 {
+        margin-bottom: 10px;
+      }
+
+      > span {
         display: inline-block;
-        padding: 5px 10px;
-        border-radius: 5px;
+        color: #6f6f6f;
+        margin-bottom: 10px;
       }
 
-      > .delete-btn {
-        color: #fff;
-        background-color: $error-color;
+      > .buttons {
+        @include display-flex(center, flex-start);
+        gap: 5px;
 
-        border: 2px solid $error-color;
-
-        &:hover {
-          background-color: rgb(255, 54, 54);
-          border: 2px solid rgb(255, 54, 54);
+        > button {
+          display: inline-block;
+          padding: 5px 10px;
+          border-radius: 5px;
         }
-      }
 
-      > .edit-btn {
-        color: $primary-color;
-        background-color: transparent;
-
-        border: 2px solid $primary-color;
-
-        &:hover {
-          background-color: $primary-color;
+        > .delete-btn {
           color: #fff;
+          background-color: $error-color;
+
+          border: 2px solid $error-color;
+
+          &:hover {
+            background-color: rgb(255, 54, 54);
+            border: 2px solid rgb(255, 54, 54);
+          }
+        }
+
+        > .edit-btn {
+          color: $primary-color;
+          background-color: transparent;
+
+          border: 2px solid $primary-color;
+
+          &:hover {
+            background-color: $primary-color;
+            color: #fff;
+          }
         }
       }
+    }
+
+    > .right-side {
+      @include display-flex(end, space-between);
+      flex-direction: column;
+      flex: 1;
     }
   }
 
   > .messages-form {
-    @include display-flex;
+    @include display-flex(start, center);
+    flex-direction: column;
+
+    padding: 10px 15px;
     width: 100%;
+
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.4);
+
+    > h2 {
+      margin: 5px 25px;
+    }
 
     > fieldset {
       @include display-flex;
       width: 100%;
-      padding: 5px 15px;
-      border: none;
 
-      background-color: #fff;
+      border: none;
       border-radius: 5px;
-      box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.4);
 
       > input {
         flex: 1;

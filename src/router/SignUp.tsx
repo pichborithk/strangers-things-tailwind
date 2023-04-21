@@ -17,11 +17,20 @@ const SignUp = () => {
   );
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   async function handleRegister(
     event: FormEvent<HTMLFormElement>
   ): Promise<void> {
     event.preventDefault();
+
+    if (password !== confirmPassword) {
+      dispatch(setNotification('Password do not match'));
+      setUsername('');
+      setPassword('');
+      setConfirmPassword('');
+      return;
+    }
 
     try {
       const result = await registerUser({ username, password });
@@ -35,6 +44,7 @@ const SignUp = () => {
     } finally {
       setUsername('');
       setPassword('');
+      setConfirmPassword('');
     }
   }
 
@@ -57,16 +67,29 @@ const SignUp = () => {
             placeholder='Enter Username'
             value={username}
             onChange={(event) => setUsername(event.target.value)}
+            required
           />
         </fieldset>
         <fieldset>
           <label htmlFor='password'>Password</label>
           <input
-            type='text'
+            type='password'
             name='password'
             placeholder='Enter Password'
             value={password}
             onChange={(event) => setPassword(event.target.value)}
+            required
+          />
+        </fieldset>
+        <fieldset>
+          <label htmlFor='confirm-password'>Password Confirmation</label>
+          <input
+            type='password'
+            name='confirm-password'
+            placeholder='Re-enter Password'
+            value={confirmPassword}
+            onChange={(event) => setConfirmPassword(event.target.value)}
+            required
           />
         </fieldset>
         <div>

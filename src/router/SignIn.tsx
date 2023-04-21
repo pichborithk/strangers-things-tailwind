@@ -48,16 +48,18 @@ const SignIn = () => {
             placeholder='Enter Username'
             value={username}
             onChange={(event) => setUsername(event.target.value)}
+            required
           />
         </fieldset>
         <fieldset>
           <label htmlFor='password'>Password</label>
           <input
-            type='text'
+            type='password'
             name='password'
             placeholder='Enter Password'
             value={password}
             onChange={(event) => setPassword(event.target.value)}
+            required
           />
         </fieldset>
         <div>
