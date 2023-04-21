@@ -36,18 +36,14 @@ const Home = () => {
         {token && <Link to='/new'>New Post</Link>}
       </form>
       <div className='posts'>
-        {postsFiltered.map((post) =>
-          post.author._id === userData._id ? (
-            <PostCard post={post} token={token} isOwner={true} key={post._id} />
-          ) : (
-            <PostCard
-              post={post}
-              token={token}
-              isOwner={false}
-              key={post._id}
-            />
-          )
-        )}
+        {postsFiltered.map((post) => (
+          <PostCard
+            post={post}
+            token={token}
+            isOwner={post.author._id === userData._id}
+            key={post._id}
+          />
+        ))}
       </div>
     </div>
   );

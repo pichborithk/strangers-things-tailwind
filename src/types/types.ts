@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, RefObject, SetStateAction } from 'react';
 
 export type Post = {
   title: string;
@@ -91,4 +91,17 @@ export type ViewPostContext = {
   userData: UserData;
   isEditing: boolean;
   setIsEditing: Dispatch<SetStateAction<boolean>>;
+};
+
+export type PostFromProps = {
+  title: string;
+  setTitle: Dispatch<SetStateAction<string>>;
+  description: string;
+  setDescription: Dispatch<SetStateAction<string>>;
+  price: string;
+  setPrice: Dispatch<SetStateAction<string>>;
+  location: string;
+  setLocation: Dispatch<SetStateAction<string>>;
+  deliverRef: RefObject<HTMLInputElement>;
+  willDeliver: boolean;
 };
