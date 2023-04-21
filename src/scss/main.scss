@@ -75,7 +75,7 @@
       }
 
       > span {
-        color: #6f6f6f;
+        color: $grey-color;
       }
     }
   }
@@ -98,7 +98,7 @@
       }
 
       > span {
-        color: #6f6f6f;
+        color: $grey-color;
       }
     }
   }
@@ -414,7 +414,7 @@
 
         > span {
           display: block;
-          color: #6f6f6f;
+          color: $grey-color;
           margin-bottom: 5px;
         }
 
@@ -431,6 +431,10 @@
             background-color: $primary-color;
             color: #fff;
           }
+        }
+
+        > p > i {
+          color: $checked-color;
         }
       }
     }
@@ -579,7 +583,7 @@
 
       > span {
         display: inline-block;
-        color: #6f6f6f;
+        color: $grey-color;
         margin-bottom: 10px;
       }
 
