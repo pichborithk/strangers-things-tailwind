@@ -1,8 +1,9 @@
-import { useNavigate } from 'react-router-dom';
-import { ProfileProps } from '../types/types';
+import { useNavigate, useOutletContext } from 'react-router-dom';
+import { RootContext } from '../types/types';
 import { useEffect } from 'react';
 
-const Profile = ({ token, userData }: ProfileProps) => {
+const Profile = () => {
+  const { token, userData } = useOutletContext<RootContext>();
   const navigate = useNavigate();
 
   useEffect(() => {

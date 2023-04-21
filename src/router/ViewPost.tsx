@@ -1,12 +1,18 @@
-import { Outlet, useNavigate, useParams } from 'react-router-dom';
-import { Message, ViewPostProps } from '../types/types';
+import {
+  Outlet,
+  useNavigate,
+  useOutletContext,
+  useParams,
+} from 'react-router-dom';
+import { Message, RootContext } from '../types/types';
 import { useEffect, useState } from 'react';
 import { deletePost } from '../api/fetchAPI';
 import { useAppDispatch } from '../app/store';
 import { getPosts } from '../app/postsSlice';
 import { getUserData } from '../app/userDataSlice';
 
-const ViewPost = ({ posts, token, userData }: ViewPostProps) => {
+const ViewPost = () => {
+  const { token, posts, userData } = useOutletContext<RootContext>();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { id } = useParams();

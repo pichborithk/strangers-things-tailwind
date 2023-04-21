@@ -1,13 +1,14 @@
 import { FormEvent, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useOutletContext } from 'react-router-dom';
 
 import logo from '../asset/Join.png';
 import { registerUser } from '../api/fetchAPI';
 import { useAppDispatch, useAppSelector } from '../app/store';
 import { setNotification } from '../app/tokenSlice';
-import { RegistrationProps } from '../types/types';
+import { RootContext } from '../types/types';
 
-const Registration = ({ token }: RegistrationProps) => {
+const SignUp = () => {
+  const { token } = useOutletContext<RootContext>();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -81,4 +82,4 @@ const Registration = ({ token }: RegistrationProps) => {
   );
 };
 
-export default Registration;
+export default SignUp;
