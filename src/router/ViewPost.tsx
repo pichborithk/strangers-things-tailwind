@@ -56,8 +56,7 @@ const ViewPost = () => {
         <div>
           <h2>{post.title}</h2>
           <span>{post.description}</span>
-          {post.author._id !== userData._id && <p>{post.location}</p>}
-          {post.author._id === userData._id && (
+          {post.author._id === userData._id ? (
             <div className='buttons'>
               <button
                 onClick={() => handleDelete()}
@@ -74,11 +73,33 @@ const ViewPost = () => {
                 {isEditing ? 'EDITING' : 'EDIT'}
               </button>
             </div>
+          ) : (
+            <p>0 view(s)</p>
           )}
         </div>
         <div className='right-side'>
           <h2>{post.price}</h2>
-          <p>0 view(s)</p>
+          {post.author._id !== userData._id ? (
+            <>
+              <p>
+                {post.willDeliver ? 'Deliver' : 'Pick up'}{' '}
+                {post.willDeliver && (
+                  <i className='fa-solid fa-circle-check'></i>
+                )}
+              </p>
+              <p>{post.location}</p>
+            </>
+          ) : (
+            <>
+              <p>
+                {post.willDeliver ? 'Deliver' : 'Pick up'}{' '}
+                {post.willDeliver && (
+                  <i className='fa-solid fa-circle-check'></i>
+                )}
+              </p>
+              <p>0 view(s)</p>
+            </>
+          )}
         </div>
       </div>
       <Outlet

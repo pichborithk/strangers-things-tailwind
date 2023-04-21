@@ -587,6 +587,10 @@
         margin-bottom: 10px;
       }
 
+      > p > i {
+        color: $checked-color;
+      }
+
       > .buttons {
         @include display-flex(center, flex-start);
         gap: 5px;
