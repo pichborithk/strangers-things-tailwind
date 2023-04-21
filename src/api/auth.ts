@@ -54,7 +54,7 @@ export async function fetchAllPosts(): Promise<Post[]> {
   try {
     const response = await fetch(`${BASE_URL}/posts`);
     const result = await response.json();
-    if (result.error) throw result.error;
+    if (result.error) console.error(result.error.message);
     return result.data.posts;
   } catch (error) {
     console.error(error);

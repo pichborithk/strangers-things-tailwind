@@ -11,22 +11,24 @@ import {
   ViewPost,
 } from './components';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { Post } from './types/types';
-import { fetchAllPosts, fetchUserData } from './api/auth';
+import { fetchUserData } from './api/auth';
 import { UserData } from './types/classes';
-import { useAppSelector } from './app/store';
+import { useAppDispatch, useAppSelector } from './app/store';
+import { getPosts } from './app/postsSlice';
 
 export const initialUserData = new UserData();
 
 function App() {
+  const dispatch = useAppDispatch();
+
   const token = useAppSelector((state) => state.tokenReducer.token);
-  const [posts, setPosts] = useState<Post[]>([]);
+  const posts = useAppSelector((state) => state.postsReducer.posts);
   const [userData, setUserData] = useState(initialUserData);
 
-  async function getPosts(): Promise<void> {
-    const result = await fetchAllPosts();
-    setPosts(result);
-  }
+  // async function getPosts(): Promise<void> {
+  //   const result = await fetchAllPosts();
+  //   setPosts(result);
+  // }
 
   async function getUserData(token: string): Promise<void> {
     const result = await fetchUserData(token);
@@ -34,7 +36,7 @@ function App() {
   }
 
   useEffect(() => {
-    getPosts();
+    dispatch(getPosts());
     if (!token) {
       setUserData(initialUserData);
       return;
@@ -59,13 +61,7 @@ function App() {
         <Route path='/register' element={<Registration token={token} />} />
         <Route
           path='/new'
-          element={
-            <NewPost
-              token={token}
-              getPosts={getPosts}
-              getUserData={getUserData}
-            />
-          }
+          element={<NewPost token={token} getUserData={getUserData} />}
         />
         <Route
           path='/:id'
@@ -74,16 +70,12 @@ function App() {
               posts={posts}
               token={token}
               userData={userData}
-              getPosts={getPosts}
               getUserData={getUserData}
             />
           }
         >
           <Route index element={<PostMessages />} />
-          <Route
-            path='edit'
-            element={<EditPost getPosts={getPosts} getUserData={getUserData} />}
-          />
+          <Route path='edit' element={<EditPost getUserData={getUserData} />} />
         </Route>
         <Route path='*' element={<Navigate to='/' />} />
       </Routes>
