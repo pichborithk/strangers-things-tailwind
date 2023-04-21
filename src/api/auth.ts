@@ -25,11 +25,11 @@ export async function registerUser({
     const result = await response.json();
     return result;
   } catch (error) {
-    console.error(error);
+    console.error('Catch register', error);
   }
 }
 
-export async function login({
+export async function fetchTokenLogin({
   username,
   password,
 }: UserAuth): Promise<TokenFetch | void> {
@@ -41,10 +41,12 @@ export async function login({
       },
       body: JSON.stringify({ user: { username, password } }),
     });
-    const result = await response.json();
+    const result: TokenFetch = await response.json();
+    if (result.error) console.error(result.error.message);
+    if (result.success) console.log(result.data?.message);
     return result;
   } catch (error) {
-    console.error(error);
+    console.error('Catch Error on FetchTokenLogin', error);
   }
 }
 

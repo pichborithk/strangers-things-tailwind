@@ -14,15 +14,12 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { Post } from './types/types';
 import { fetchAllPosts, fetchUserData } from './api/auth';
 import { UserData } from './types/classes';
-
-const initialToken: string = localStorage.getItem('TOKEN')
-  ? localStorage.getItem('TOKEN')!
-  : '';
+import { useAppSelector } from './app/store';
 
 export const initialUserData = new UserData();
 
 function App() {
-  const [token, setToken] = useState(initialToken);
+  const token = useAppSelector((state) => state.tokenReducer.token);
   const [posts, setPosts] = useState<Post[]>([]);
   const [userData, setUserData] = useState(initialUserData);
 
@@ -48,7 +45,7 @@ function App() {
 
   return (
     <>
-      <Navbar token={token} setToken={setToken} setUserData={setUserData} />
+      <Navbar setUserData={setUserData} />
       <Routes>
         <Route
           index
@@ -56,13 +53,10 @@ function App() {
         />
         <Route
           path='/profile'
-          element={<Profile token={token} userData={userData} />}
+          element={<Profile userData={userData} token={token} />}
         />
-        <Route
-          path='/signin'
-          element={<SignIn setToken={setToken} token={token} />}
-        />
-        <Route path='/register' element={<Registration />} />
+        <Route path='/signin' element={<SignIn token={token} />} />
+        <Route path='/register' element={<Registration token={token} />} />
         <Route
           path='/new'
           element={

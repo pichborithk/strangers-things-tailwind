@@ -43,6 +43,7 @@ export type UserAuth = {
 };
 
 export type TokenFetch = {
+  success: boolean;
   error: Error | null;
   data: { token: string; message: string } | null;
 };
@@ -71,20 +72,13 @@ export type ProfileProps = {
 };
 
 export type NavbarProps = {
-  token: string;
-  setToken: Dispatch<SetStateAction<string>>;
   setUserData: Dispatch<SetStateAction<UserData>>;
 };
 
 export type HomeProps = {
+  token: string;
   posts: Post[];
   userData: UserData;
-  token: string;
-};
-
-export type SignInProps = {
-  setToken: Dispatch<SetStateAction<string>>;
-  token: string | null;
 };
 
 export type NewPostProps = {
@@ -126,4 +120,12 @@ export type EditPostContext = {
 export type EditPostProps = {
   getPosts: () => Promise<void>;
   getUserData: (token: string) => Promise<void>;
+};
+
+export type SignInProps = {
+  token: string;
+};
+
+export type RegistrationProps = {
+  token: string;
 };

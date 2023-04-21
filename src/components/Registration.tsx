@@ -1,13 +1,21 @@
-import { FormEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { FormEvent, useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import logo from '../asset/Join.png';
 import { registerUser } from '../api/auth';
+import { useAppDispatch, useAppSelector } from '../app/store';
+import { setNotification } from '../app/tokenSlice';
+import { RegistrationProps } from '../types/types';
 
-const Registration = () => {
+const Registration = ({ token }: RegistrationProps) => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const notification = useAppSelector(
+    (state) => state.tokenReducer.notification
+  );
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [failMessage, setFailMessage] = useState('');
 
   async function handleRegister(
     event: FormEvent<HTMLFormElement>
@@ -17,16 +25,24 @@ const Registration = () => {
     try {
       const result = await registerUser({ username, password });
       if (result && result.error) {
-        setFailMessage(result.error.message);
+        dispatch(setNotification(result.error.message));
         throw result.error;
       }
+      dispatch(setNotification(result!.data!.message));
     } catch (error) {
-      console.error(error);
+      console.error('Catch handle register', error);
     } finally {
       setUsername('');
       setPassword('');
     }
   }
+
+  useEffect(() => {
+    dispatch(setNotification(''));
+    if (token) {
+      navigate('/');
+    }
+  }, []);
 
   return (
     <div className='register'>
@@ -58,7 +74,7 @@ const Registration = () => {
             Already Have An Account? <Link to='/signin'>Sign in</Link>
           </p>
         </div>
-        <span>{failMessage}</span>
+        <span>{notification}</span>
       </form>
       <img src={logo} alt='join' />
     </div>
