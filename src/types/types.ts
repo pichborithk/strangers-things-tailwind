@@ -65,19 +65,10 @@ export type Error = {
   message: string;
 };
 
-export type ProfileProps = {
-  token: string;
-  userData: UserData;
-};
-
 export type HomeProps = {
   token: string;
   posts: Post[];
   userData: UserData;
-};
-
-export type NewPostProps = {
-  token: string;
 };
 
 export type PostCardProps = {
@@ -86,32 +77,18 @@ export type PostCardProps = {
   token: string;
 };
 
-export type ViewPostProps = {
+export type RootContext = {
+  token: string;
   posts: Post[];
   userData: UserData;
-  token: string;
 };
 
-export type PostMessagesContext = {
+export type ViewPostContext = {
   token: string;
   id?: string;
   post: Post;
   messagesList: Message[];
   userData: UserData;
-};
-
-export type EditPostContext = {
-  post: Post;
-  token: string;
-  id?: string;
-  setIsEditing: Dispatch<SetStateAction<boolean>>;
   isEditing: boolean;
-};
-
-export type SignInProps = {
-  token: string;
-};
-
-export type RegistrationProps = {
-  token: string;
+  setIsEditing: Dispatch<SetStateAction<boolean>>;
 };

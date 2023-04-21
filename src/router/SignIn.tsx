@@ -1,10 +1,11 @@
 import { FormEvent, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useOutletContext } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../app/store';
 import { login, setNotification } from '../app/tokenSlice';
-import { SignInProps } from '../types/types';
+import { RootContext } from '../types/types';
 
-const SignIn = ({ token }: SignInProps) => {
+const SignIn = () => {
+  const { token } = useOutletContext<RootContext>();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 

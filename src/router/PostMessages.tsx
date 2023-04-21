@@ -1,11 +1,11 @@
 import { FormEvent, useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { postMessage } from '../api/fetchAPI';
-import { PostMessagesContext } from '../types/types';
+import { ViewPostContext } from '../types/types';
 
 const PostMessages = () => {
   const { token, id, post, messagesList, userData } =
-    useOutletContext<PostMessagesContext>();
+    useOutletContext<ViewPostContext>();
   const [message, setMessage] = useState('');
 
   async function handleSubmitMessage(event: FormEvent) {

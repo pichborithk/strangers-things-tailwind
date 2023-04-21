@@ -1,19 +1,31 @@
 import { FormEvent, useEffect, useRef, useState } from 'react';
-import { NewPostProps } from '../types/types';
-import { makePost } from '../api/fetchAPI';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
+import { ViewPostContext } from '../types/types';
+import { updatePost } from '../api/fetchAPI';
 import { useAppDispatch } from '../app/store';
 import { getPosts } from '../app/postsSlice';
 import { getUserData } from '../app/userDataSlice';
 
-const NewPost = ({ token }: NewPostProps) => {
+const EditPost = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { id, post, token, isEditing, setIsEditing } =
+    useOutletContext<ViewPostContext>();
+
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [price, setPrice] = useState<string>('');
   const [location, setLocation] = useState<string>('');
   const deliverRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (!isEditing) return navigate(`/${id}`);
+
+    setTitle(post.title);
+    setDescription(post.description);
+    setPrice(post.price);
+    setLocation(post.location);
+  }, []);
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
@@ -27,30 +39,15 @@ const NewPost = ({ token }: NewPostProps) => {
           willDeliver: deliverRef.current!.checked,
         }
       : { title, description, price, willDeliver: deliverRef.current!.checked };
-    try {
-      const result = await makePost(dataObj, token);
-      if (result && result.error) {
-        throw result.error;
-      }
-      if (result && result.data) {
-        console.log(result.data);
-        dispatch(getPosts());
-        dispatch(getUserData(token));
-        navigate('/');
-      }
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setTitle('');
-      setDescription('');
-      setPrice('');
-      setLocation('');
+
+    const result = await updatePost(id!, token, dataObj);
+    if (result) {
+      dispatch(getPosts());
+      dispatch(getUserData(token));
+      setIsEditing(false);
+      navigate(`/${id}`);
     }
   }
-
-  useEffect(() => {
-    if (!token) return navigate('/');
-  }, [token]);
 
   return (
     <form className='post-form' onSubmit={handleSubmit}>
@@ -108,12 +105,13 @@ const NewPost = ({ token }: NewPostProps) => {
           name='deliver'
           type='checkbox'
           ref={deliverRef}
+          defaultChecked={post?.willDeliver ? true : false}
         />
         <label htmlFor='deliver'>Willing to Deliver?</label>
       </fieldset>
-      <button>POST</button>
+      <button>SAVE</button>
     </form>
   );
 };
 
-export default NewPost;
+export default EditPost;

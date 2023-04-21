@@ -1,9 +1,10 @@
-import { Link } from 'react-router-dom';
-import { HomeProps } from '../types/types';
-import PostCard from './PostCard';
+import { Link, useOutletContext } from 'react-router-dom';
+import { RootContext } from '../types/types';
+import { PostCard } from '../components';
 import { useEffect, useState } from 'react';
 
-const Home = ({ token, posts, userData }: HomeProps) => {
+const Home = () => {
+  const { token, posts, userData } = useOutletContext<RootContext>();
   const [keyword, setKeyword] = useState('');
   const [postsFiltered, setPostsFiltered] = useState(posts);
 
