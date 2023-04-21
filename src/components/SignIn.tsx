@@ -1,40 +1,39 @@
 import { FormEvent, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { login } from '../api/auth';
+import { useAppDispatch, useAppSelector } from '../app/store';
+import { login, setNotification } from '../app/tokenSlice';
 import { SignInProps } from '../types/types';
 
-const SignIn = ({ setToken, token }: SignInProps) => {
+const SignIn = ({ token }: SignInProps) => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const notification = useAppSelector(
+    (state) => state.tokenReducer.notification
+  );
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [failMessage, setFailMessage] = useState('');
 
   async function handleSignIn(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    try {
-      const result = await login({ username, password });
-      if (result && result.error) {
-        setFailMessage(result.error.message);
-        throw result.error;
-      }
-      if (result && result.data) {
-        console.log(result.data.message);
-        setToken(result.data.token);
-        localStorage.setItem('TOKEN', result.data.token);
-        navigate('/');
-      }
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setUsername('');
-      setPassword('');
-    }
+    dispatch(login({ username, password }));
+
+    setUsername('');
+    setPassword('');
   }
 
   useEffect(() => {
-    if (token) return navigate('/');
+    if (token) {
+      localStorage.setItem('TOKEN', token);
+      dispatch(setNotification(''));
+      navigate('/');
+    }
   }, [token]);
+
+  useEffect(() => {
+    dispatch(setNotification(''));
+  }, []);
 
   return (
     <div className='signin'>
@@ -69,7 +68,7 @@ const SignIn = ({ setToken, token }: SignInProps) => {
             Don't have an account? <Link to='/register'>Join Us</Link>
           </p>
         </div>
-        <span>{failMessage}</span>
+        <span>{notification}</span>
       </form>
     </div>
   );

@@ -3,7 +3,7 @@ import { HomeProps } from '../types/types';
 import PostCard from './PostCard';
 import { useEffect, useState } from 'react';
 
-const Home = ({ posts, token, userData }: HomeProps) => {
+const Home = ({ token, posts, userData }: HomeProps) => {
   const [keyword, setKeyword] = useState('');
   const [postsFiltered, setPostsFiltered] = useState(posts);
 
