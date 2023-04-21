@@ -53,30 +53,33 @@ const ViewPost = () => {
   return (
     <div className='post-view'>
       <div className='post'>
-        <h2>{post.title}</h2>
-        <span>{post.description}</span>
-        <p>{post.price}</p>
-        {post.author._id !== userData._id && <p>{post.author.username}</p>}
-        {post.author._id !== userData._id && <p>{post.location}</p>}
-        <p>{post.__v} view(s)</p>
-        {post.author._id === userData._id && (
-          <div>
-            <button
-              onClick={() => handleDelete()}
-              type='button'
-              className='delete-btn'
-            >
-              DELETE
-            </button>
-            <button
-              onClick={() => handleEdit()}
-              className={isEditing ? 'edit-btn active' : 'edit-btn'}
-              disabled={isEditing}
-            >
-              {isEditing ? 'EDITING' : 'EDIT'}
-            </button>
-          </div>
-        )}
+        <div>
+          <h2>{post.title}</h2>
+          <span>{post.description}</span>
+          {post.author._id !== userData._id && <p>{post.location}</p>}
+          {post.author._id === userData._id && (
+            <div className='buttons'>
+              <button
+                onClick={() => handleDelete()}
+                type='button'
+                className='delete-btn'
+              >
+                DELETE
+              </button>
+              <button
+                onClick={() => handleEdit()}
+                className={isEditing ? 'edit-btn active' : 'edit-btn'}
+                disabled={isEditing}
+              >
+                {isEditing ? 'EDITING' : 'EDIT'}
+              </button>
+            </div>
+          )}
+        </div>
+        <div className='right-side'>
+          <h2>{post.price}</h2>
+          <p>0 view(s)</p>
+        </div>
       </div>
       <Outlet
         context={{
