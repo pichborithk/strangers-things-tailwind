@@ -18,6 +18,7 @@ const SignUp = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [hidePassword, setHidePassword] = useState(true);
 
   async function handleRegister(
     event: FormEvent<HTMLFormElement>
@@ -62,6 +63,7 @@ const SignUp = () => {
         <fieldset>
           <label htmlFor='username'>Username</label>
           <input
+            autoComplete='off'
             type='text'
             name='username'
             placeholder='Enter Username'
@@ -73,24 +75,36 @@ const SignUp = () => {
         <fieldset>
           <label htmlFor='password'>Password</label>
           <input
-            type='password'
+            type={hidePassword ? 'password' : 'text'}
             name='password'
             placeholder='Enter Password'
             value={password}
             onChange={(event) => setPassword(event.target.value)}
             required
           />
+          <i
+            className={`fa-solid  ${hidePassword ? 'fa-eye-slash' : 'fa-eye'} ${
+              !(password || confirmPassword) && 'hidden'
+            }`}
+            onClick={() => setHidePassword(!hidePassword)}
+          ></i>
         </fieldset>
         <fieldset>
           <label htmlFor='confirm-password'>Password Confirmation</label>
           <input
-            type='password'
+            type={hidePassword ? 'password' : 'text'}
             name='confirm-password'
             placeholder='Re-enter Password'
             value={confirmPassword}
             onChange={(event) => setConfirmPassword(event.target.value)}
             required
           />
+          <i
+            className={`fa-solid  ${hidePassword ? 'fa-eye-slash' : 'fa-eye'} ${
+              !(password || confirmPassword) && 'hidden'
+            }`}
+            onClick={() => setHidePassword(!hidePassword)}
+          ></i>
         </fieldset>
         <div>
           <button>Create Account</button>

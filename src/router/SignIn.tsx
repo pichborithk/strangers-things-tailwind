@@ -14,6 +14,7 @@ const SignIn = () => {
   );
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [hidePassword, setHidePassword] = useState(true);
 
   async function handleSignIn(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -54,13 +55,19 @@ const SignIn = () => {
         <fieldset>
           <label htmlFor='password'>Password</label>
           <input
-            type='password'
+            type={hidePassword ? 'password' : 'text'}
             name='password'
             placeholder='Enter Password'
             value={password}
             onChange={(event) => setPassword(event.target.value)}
             required
           />
+          <i
+            className={`fa-solid  ${hidePassword ? 'fa-eye-slash' : 'fa-eye'} ${
+              !password && 'hidden'
+            }`}
+            onClick={() => setHidePassword(!hidePassword)}
+          ></i>
         </fieldset>
         <div>
           <button>Sign In</button>
