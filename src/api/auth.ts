@@ -4,6 +4,7 @@ import {
   Post,
   TokenFetch,
   UserAuth,
+  UserData,
 } from '../types/types';
 
 const BASE_URL = `${import.meta.env.VITE_API_URL}/${
@@ -62,7 +63,7 @@ export async function fetchAllPosts(): Promise<Post[]> {
   }
 }
 
-export async function fetchUserData(token: string) {
+export async function fetchUserData(token: string): Promise<UserData | void> {
   try {
     const response = await fetch(`${BASE_URL}/users/me`, {
       headers: {
@@ -74,8 +75,7 @@ export async function fetchUserData(token: string) {
     if (result.error) throw result.error;
     return result.data;
   } catch (error) {
-    console.error(error);
-    return null;
+    console.error('Catch error on fetchUserData', error);
   }
 }
 

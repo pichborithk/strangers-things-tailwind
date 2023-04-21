@@ -4,8 +4,9 @@ import { useEffect, useState } from 'react';
 import { deletePost } from '../api/auth';
 import { useAppDispatch } from '../app/store';
 import { getPosts } from '../app/postsSlice';
+import { getUserData } from '../app/userDataSlice';
 
-const ViewPost = ({ posts, token, userData, getUserData }: ViewPostProps) => {
+const ViewPost = ({ posts, token, userData }: ViewPostProps) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
@@ -33,7 +34,7 @@ const ViewPost = ({ posts, token, userData, getUserData }: ViewPostProps) => {
     const result = await deletePost(id!, token);
     if (result) {
       dispatch(getPosts());
-      getUserData(token);
+      dispatch(getUserData(token));
       navigate('/');
     }
   }

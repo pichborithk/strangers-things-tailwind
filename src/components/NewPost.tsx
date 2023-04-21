@@ -4,8 +4,9 @@ import { makePost } from '../api/auth';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../app/store';
 import { getPosts } from '../app/postsSlice';
+import { getUserData } from '../app/userDataSlice';
 
-const NewPost = ({ token, getUserData }: NewPostProps) => {
+const NewPost = ({ token }: NewPostProps) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [title, setTitle] = useState<string>('');
@@ -34,7 +35,7 @@ const NewPost = ({ token, getUserData }: NewPostProps) => {
       if (result && result.data) {
         console.log(result.data);
         dispatch(getPosts());
-        getUserData(token);
+        dispatch(getUserData(token));
         navigate('/');
       }
     } catch (error) {
