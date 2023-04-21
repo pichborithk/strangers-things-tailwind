@@ -2,8 +2,11 @@ import { FormEvent, useEffect, useRef, useState } from 'react';
 import { NewPostProps } from '../types/types';
 import { makePost } from '../api/auth';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../app/store';
+import { getPosts } from '../app/postsSlice';
 
-const NewPost = ({ token, getPosts, getUserData }: NewPostProps) => {
+const NewPost = ({ token, getUserData }: NewPostProps) => {
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
@@ -30,7 +33,7 @@ const NewPost = ({ token, getPosts, getUserData }: NewPostProps) => {
       }
       if (result && result.data) {
         console.log(result.data);
-        getPosts();
+        dispatch(getPosts());
         getUserData(token);
         navigate('/');
       }

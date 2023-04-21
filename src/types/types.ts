@@ -83,7 +83,6 @@ export type HomeProps = {
 
 export type NewPostProps = {
   token: string;
-  getPosts: () => Promise<void>;
   getUserData: (token: string) => Promise<void>;
 };
 
@@ -97,7 +96,6 @@ export type ViewPostProps = {
   posts: Post[];
   userData: UserData;
   token: string;
-  getPosts: () => Promise<void>;
   getUserData: (token: string) => Promise<void>;
 };
 
@@ -118,7 +116,6 @@ export type EditPostContext = {
 };
 
 export type EditPostProps = {
-  getPosts: () => Promise<void>;
   getUserData: (token: string) => Promise<void>;
 };
 

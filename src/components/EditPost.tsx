@@ -2,8 +2,11 @@ import { FormEvent, useEffect, useRef, useState } from 'react';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import { EditPostContext, EditPostProps } from '../types/types';
 import { updatePost } from '../api/auth';
+import { useAppDispatch } from '../app/store';
+import { getPosts } from '../app/postsSlice';
 
-const EditPost = ({ getUserData, getPosts }: EditPostProps) => {
+const EditPost = ({ getUserData }: EditPostProps) => {
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { id, post, token, isEditing, setIsEditing } =
     useOutletContext<EditPostContext>();
@@ -38,7 +41,7 @@ const EditPost = ({ getUserData, getPosts }: EditPostProps) => {
 
     const result = await updatePost(id!, token, dataObj);
     if (result) {
-      getPosts();
+      dispatch(getPosts());
       getUserData(token);
       setIsEditing(false);
       navigate(`/${id}`);

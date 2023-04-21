@@ -2,14 +2,11 @@ import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import { Message, ViewPostProps } from '../types/types';
 import { useEffect, useState } from 'react';
 import { deletePost } from '../api/auth';
+import { useAppDispatch } from '../app/store';
+import { getPosts } from '../app/postsSlice';
 
-const ViewPost = ({
-  posts,
-  token,
-  userData,
-  getPosts,
-  getUserData,
-}: ViewPostProps) => {
+const ViewPost = ({ posts, token, userData, getUserData }: ViewPostProps) => {
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
   const [messagesList, setMessagesList] = useState<Message[]>([]);
@@ -35,7 +32,7 @@ const ViewPost = ({
   async function handleDelete() {
     const result = await deletePost(id!, token);
     if (result) {
-      getPosts();
+      dispatch(getPosts());
       getUserData(token);
       navigate('/');
     }
