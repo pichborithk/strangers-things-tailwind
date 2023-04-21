@@ -24,7 +24,7 @@ const Root = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar token={token} />
       <Outlet context={{ token, posts, userData }} />
     </>
   );

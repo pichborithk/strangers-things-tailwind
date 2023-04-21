@@ -5,10 +5,12 @@ import { updatePost } from '../api/fetchAPI';
 import { useAppDispatch } from '../app/store';
 import { getPosts } from '../app/postsSlice';
 import { getUserData } from '../app/userDataSlice';
+import { PostForm } from '../components';
 
 const EditPost = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
   const { id, post, token, isEditing, setIsEditing } =
     useOutletContext<ViewPostContext>();
 
@@ -49,67 +51,32 @@ const EditPost = () => {
     }
   }
 
+  function handleCancel() {
+    setIsEditing(false);
+    navigate('..');
+  }
+
   return (
     <form className='post-form' onSubmit={handleSubmit}>
-      <h1>Add New Post</h1>
-      <fieldset className='input-fieldset'>
-        <label htmlFor='title' className={title ? 'focus' : ''}>
-          Title
-        </label>
-        <input
-          name='title'
-          type='text'
-          required
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
-        />
-      </fieldset>
-      <fieldset className='input-fieldset'>
-        <label htmlFor='description' className={description ? 'focus' : ''}>
-          Description
-        </label>
-        <input
-          name='description'
-          type='text'
-          required
-          value={description}
-          onChange={(event) => setDescription(event.target.value)}
-        />
-      </fieldset>
-      <fieldset className='input-fieldset'>
-        <label htmlFor='price' className={price ? 'focus' : ''}>
-          Price
-        </label>
-        <input
-          name='price'
-          type='text'
-          required
-          value={price}
-          onChange={(event) => setPrice(event.target.value)}
-        />
-      </fieldset>
-      <fieldset className='input-fieldset'>
-        <label htmlFor='location' className={location ? 'focus' : ''}>
-          Location
-        </label>
-        <input
-          name='location'
-          type='text'
-          value={location}
-          onChange={(event) => setLocation(event.target.value)}
-        />
-      </fieldset>
-      <fieldset>
-        <input
-          className='check-box'
-          name='deliver'
-          type='checkbox'
-          ref={deliverRef}
-          defaultChecked={post?.willDeliver ? true : false}
-        />
-        <label htmlFor='deliver'>Willing to Deliver?</label>
-      </fieldset>
-      <button>SAVE</button>
+      <h1>Edit Post</h1>
+      <PostForm
+        title={title}
+        setTitle={setTitle}
+        description={description}
+        setDescription={setDescription}
+        price={price}
+        setPrice={setPrice}
+        location={location}
+        setLocation={setLocation}
+        deliverRef={deliverRef}
+        willDeliver={post.willDeliver}
+      />
+      <div className='buttons'>
+        <button>SAVE</button>
+        <button type='button' onClick={() => handleCancel()} className='cancel'>
+          Cancel
+        </button>
+      </div>
     </form>
   );
 };

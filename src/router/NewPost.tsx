@@ -5,11 +5,14 @@ import { useNavigate, useOutletContext } from 'react-router-dom';
 import { useAppDispatch } from '../app/store';
 import { getPosts } from '../app/postsSlice';
 import { getUserData } from '../app/userDataSlice';
+import { PostForm } from '../components';
 
 const NewPost = () => {
-  const { token } = useOutletContext<RootContext>();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const { token } = useOutletContext<RootContext>();
+
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [price, setPrice] = useState<string>('');
@@ -49,6 +52,14 @@ const NewPost = () => {
     }
   }
 
+  function handleCancel() {
+    setTitle('');
+    setDescription('');
+    setPrice('');
+    setLocation('');
+    navigate('/');
+  }
+
   useEffect(() => {
     if (!token) return navigate('/');
   }, [token]);
@@ -56,63 +67,24 @@ const NewPost = () => {
   return (
     <form className='post-form' onSubmit={handleSubmit}>
       <h1>Add New Post</h1>
-      <fieldset className='input-fieldset'>
-        <label htmlFor='title' className={title ? 'focus' : ''}>
-          Title
-        </label>
-        <input
-          name='title'
-          type='text'
-          required
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
-        />
-      </fieldset>
-      <fieldset className='input-fieldset'>
-        <label htmlFor='description' className={description ? 'focus' : ''}>
-          Description
-        </label>
-        <input
-          name='description'
-          type='text'
-          required
-          value={description}
-          onChange={(event) => setDescription(event.target.value)}
-        />
-      </fieldset>
-      <fieldset className='input-fieldset'>
-        <label htmlFor='price' className={price ? 'focus' : ''}>
-          Price
-        </label>
-        <input
-          name='price'
-          type='text'
-          required
-          value={price}
-          onChange={(event) => setPrice(event.target.value)}
-        />
-      </fieldset>
-      <fieldset className='input-fieldset'>
-        <label htmlFor='location' className={location ? 'focus' : ''}>
-          Location
-        </label>
-        <input
-          name='location'
-          type='text'
-          value={location}
-          onChange={(event) => setLocation(event.target.value)}
-        />
-      </fieldset>
-      <fieldset>
-        <input
-          className='check-box'
-          name='deliver'
-          type='checkbox'
-          ref={deliverRef}
-        />
-        <label htmlFor='deliver'>Willing to Deliver?</label>
-      </fieldset>
-      <button>POST</button>
+      <PostForm
+        title={title}
+        setTitle={setTitle}
+        description={description}
+        setDescription={setDescription}
+        price={price}
+        setPrice={setPrice}
+        location={location}
+        setLocation={setLocation}
+        deliverRef={deliverRef}
+        willDeliver={false}
+      />
+      <div className='buttons'>
+        <button>POST</button>
+        <button type='button' onClick={() => handleCancel()} className='cancel'>
+          Cancel
+        </button>
+      </div>
     </form>
   );
 };

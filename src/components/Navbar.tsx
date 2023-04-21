@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom';
 
-import { useAppDispatch, useAppSelector } from '../app/store';
+import { useAppDispatch } from '../app/store';
 import { setToken } from '../app/tokenSlice';
 import { clearUserData } from '../app/userDataSlice';
 
-const Navbar = () => {
-  const token = useAppSelector((state) => state.tokenReducer.token);
+const Navbar = ({ token }: { token: string }) => {
   const dispatch = useAppDispatch();
 
   function handleSignOut(): void {
