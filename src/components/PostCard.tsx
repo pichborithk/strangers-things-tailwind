@@ -7,7 +7,11 @@ const PostCard = ({ post, token, isOwner }: PostCardProps) => {
       <div>
         <h2>{post.title}</h2>
         <span>{post.description}</span>
-        <p>By: {post.author.username}</p>
+        <p>
+          By: {post.author.username}{' '}
+          {isOwner && <i className='fa-solid fa-circle-check'></i>}
+        </p>
+
         <p>{post.__v} view(s)</p>
       </div>
       <div className='right-side'>
