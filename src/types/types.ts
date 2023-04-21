@@ -1,5 +1,4 @@
 import { Dispatch, SetStateAction } from 'react';
-import { UserData } from './classes';
 
 export type Post = {
   title: string;
@@ -16,10 +15,10 @@ export type Post = {
   updatedAt: string;
 };
 
-// export type UserData = {
-//   posts: Post[];
-//   messages: Message[];
-// } & UserInfo;
+export type UserData = {
+  posts: Post[];
+  messages: Message[];
+} & UserInfo;
 
 export type UserInfo = {
   username: string;
@@ -71,10 +70,6 @@ export type ProfileProps = {
   userData: UserData;
 };
 
-export type NavbarProps = {
-  setUserData: Dispatch<SetStateAction<UserData>>;
-};
-
 export type HomeProps = {
   token: string;
   posts: Post[];
@@ -83,7 +78,6 @@ export type HomeProps = {
 
 export type NewPostProps = {
   token: string;
-  getUserData: (token: string) => Promise<void>;
 };
 
 export type PostCardProps = {
@@ -96,7 +90,6 @@ export type ViewPostProps = {
   posts: Post[];
   userData: UserData;
   token: string;
-  getUserData: (token: string) => Promise<void>;
 };
 
 export type PostMessagesContext = {
@@ -113,10 +106,6 @@ export type EditPostContext = {
   id?: string;
   setIsEditing: Dispatch<SetStateAction<boolean>>;
   isEditing: boolean;
-};
-
-export type EditPostProps = {
-  getUserData: (token: string) => Promise<void>;
 };
 
 export type SignInProps = {

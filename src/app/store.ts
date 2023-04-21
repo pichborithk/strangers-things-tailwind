@@ -2,11 +2,13 @@ import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import tokenReducer from './tokenSlice';
 import postsReducer from './postsSlice';
+import userDataReducer from './userDataSlice';
 
 const store = configureStore({
   reducer: {
     tokenReducer: tokenReducer,
     postsReducer: postsReducer,
+    userDataReducer: userDataReducer,
   },
 });
 
