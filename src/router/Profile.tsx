@@ -14,7 +14,9 @@ const Profile = () => {
 
   return (
     <div className='profile'>
-      <h1>Welcome {userData.username}</h1>
+      <h1>
+        Welcome <span>{userData.username}</span>
+      </h1>
       <div className='active-posts'>
         {userData.posts.map((post) => {
           if (post.active)

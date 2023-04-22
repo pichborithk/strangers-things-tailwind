@@ -5,7 +5,7 @@ const PostCard = ({ post, token, isOwner }: PostCardProps) => {
   return (
     <div className='post-card'>
       <div>
-        <h2>{post.title}</h2>
+        <h2 className='post-title'>{post.title}</h2>
         <span>{post.description}</span>
         <p>
           By: {post.author.username}{' '}

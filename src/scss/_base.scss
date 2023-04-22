@@ -1,10 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@400;700&display=swap');
+
+@font-face {
+  font-family: Gilroy-ExtraBold;
+  src: url(../asset/Gilroy-ExtraBold.otf);
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Gilroy-Light;
+  src: url(../asset/Gilroy-Light.otf);
+  font-style: normal;
+}
+
 /* reset styles */
 * {
   box-sizing: border-box;
   color: inherit;
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: Gilroy-ExtraBold, serif;
 }
 
 ul {

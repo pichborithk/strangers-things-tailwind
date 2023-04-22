@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../app/store';
 import { setToken } from '../app/tokenSlice';
 import { clearUserData } from '../app/userDataSlice';
+import logo from "../asset/stranger's things.png";
 
 const Navbar = ({ token }: { token: string }) => {
   const dispatch = useAppDispatch();
@@ -15,7 +16,7 @@ const Navbar = ({ token }: { token: string }) => {
 
   return (
     <nav className='navbar'>
-      <p>Stranger's Things</p>
+      <img src={logo} alt='logo web site' />
       <div className='nav-link'>
         <Link to='/'>HOME</Link>
         {token ? (
