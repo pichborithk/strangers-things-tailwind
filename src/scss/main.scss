@@ -12,7 +12,7 @@
 // utilities (margin, padding, opacity, etc)
 
 #root {
-  @include display-flex(center, flex-start);
+  // @include display-flex(center, flex-start);
   flex-direction: column;
 
   min-height: 100vh;
@@ -20,6 +20,11 @@
   padding-top: 80px;
 
   font-family: gilroy;
+}
+
+main {
+  @include display-flex;
+  width: 100%;
 }
 
 .navbar {
@@ -43,12 +48,59 @@
 
   > .nav-link {
     @include display-flex;
-    gap: 40px;
+    gap: 10px;
+    position: relative;
 
-    > * {
+    > a {
       color: $primary-color;
       font-family: 'Jura', sans-serif;
       font-weight: 700;
+
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: 2px solid transparent;
+
+      &:hover {
+        border: 2px solid $primary-color;
+      }
+    }
+
+    > .signup {
+      color: #fff;
+      background-color: $primary-color;
+
+      border: none;
+    }
+
+    > p {
+      @include display-flex;
+      font-size: 2rem;
+      padding: 10px;
+      height: 50px;
+      width: 50px;
+      background-color: $primary-color;
+      border-radius: 50%;
+
+      cursor: pointer;
+    }
+
+    > .signout {
+      position: absolute;
+      right: -50px;
+      top: 49px;
+      background-color: $primary-color;
+      color: #fff;
+      font-size: 1rem;
+
+      transition: all 0.6s ease-in-out;
+      opacity: 0;
+      z-index: -1;
+
+      &.active {
+        transition: all 0.6s ease-in-out;
+        opacity: 1;
+        z-index: 2;
+      }
     }
   }
 }
