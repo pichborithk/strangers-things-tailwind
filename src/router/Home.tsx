@@ -11,7 +11,9 @@ const Home = () => {
   useEffect(() => {
     if (!posts) return;
     const newPosts = posts.filter(
-      (post) => post.title.toLowerCase().includes(keyword) || keyword === ''
+      (post) =>
+        post.title.toLowerCase().includes(keyword.toLocaleLowerCase()) ||
+        keyword === ''
     );
     newPosts.sort((prevPost, nextPost) => {
       const prevPostDate = new Date(prevPost.updatedAt);
