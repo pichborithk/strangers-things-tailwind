@@ -4,8 +4,9 @@ import { useAppDispatch } from '../app/store';
 import { setToken } from '../app/tokenSlice';
 import { clearUserData } from '../app/userDataSlice';
 import logo from "../asset/stranger's things.png";
+import { NavbarProps } from '../types/types';
 
-const Navbar = ({ token }: { token: string }) => {
+const Navbar = ({ token, openUser, setOpenUser, userData }: NavbarProps) => {
   const dispatch = useAppDispatch();
 
   function handleSignOut(): void {
@@ -22,14 +23,28 @@ const Navbar = ({ token }: { token: string }) => {
         {token ? (
           <>
             <Link to='/profile'>PROFILE</Link>
-            <Link to='/' onClick={handleSignOut}>
+            <p
+              onClick={(event) => {
+                event.stopPropagation();
+                setOpenUser(!openUser);
+              }}
+            >
+              {userData.username.slice(0, 1).toUpperCase()}
+            </p>
+            <Link
+              to='/'
+              onClick={handleSignOut}
+              className={openUser ? 'signout active' : 'signout'}
+            >
               SIGN OUT
             </Link>
           </>
         ) : (
           <>
-            <Link to='/register'>SIGN UP</Link>
             <Link to='/signin'>SIGN IN</Link>
+            <Link to='/register' className='signup'>
+              SIGN UP
+            </Link>
           </>
         )}
       </div>

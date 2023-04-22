@@ -105,3 +105,10 @@ export type PostFromProps = {
   deliverRef: RefObject<HTMLInputElement>;
   willDeliver: boolean;
 };
+
+export type NavbarProps = {
+  token: string;
+  openUser: boolean;
+  userData: UserData;
+  setOpenUser: Dispatch<SetStateAction<boolean>>;
+};
