@@ -54,7 +54,7 @@ const ViewPost = () => {
     <div className='post-view'>
       <div className='post'>
         <div>
-          <h2>{post.title}</h2>
+          <h2 className='post-title'>{post.title}</h2>
           <span>{post.description}</span>
           {post.author._id === userData._id ? (
             <div className='buttons'>
