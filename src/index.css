@@ -1,3 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: Gilroy-ExtraBold;
+  src: url(./asset/Gilroy-ExtraBold.otf);
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Gilroy-Light;
+  src: url(../asset/Gilroy-Light.otf);
+  font-style: normal;
+}
+
+@layer utilities {
+  .section-min-height {
+    min-height: calc(100vh - 96px);
+  }
+}
+
+* {
+  font-family: Gilroy-ExtraBold;
+}
+
+.nav-link > a {
+  font-family: 'Jura', sans-serif;
+}
