@@ -25,7 +25,7 @@ const PostForm = (props: PostFromProps) => {
           type='text'
           required
           value={title}
-          onChange={(event) => setTitle(event.target.value)}
+          onChange={event => setTitle(event.target.value)}
         />
       </fieldset>
       <fieldset className='input-fieldset'>
@@ -37,7 +37,7 @@ const PostForm = (props: PostFromProps) => {
           type='text'
           required
           value={description}
-          onChange={(event) => setDescription(event.target.value)}
+          onChange={event => setDescription(event.target.value)}
         />
       </fieldset>
       <fieldset className='input-fieldset'>
@@ -49,7 +49,7 @@ const PostForm = (props: PostFromProps) => {
           type='text'
           required
           value={price}
-          onChange={(event) => setPrice(event.target.value)}
+          onChange={event => setPrice(event.target.value)}
         />
       </fieldset>
       <fieldset className='input-fieldset'>
@@ -60,7 +60,7 @@ const PostForm = (props: PostFromProps) => {
           name='location'
           type='text'
           value={location}
-          onChange={(event) => setLocation(event.target.value)}
+          onChange={event => setLocation(event.target.value)}
         />
       </fieldset>
       <fieldset>

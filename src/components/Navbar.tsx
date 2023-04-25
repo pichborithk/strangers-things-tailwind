@@ -24,7 +24,7 @@ const Navbar = ({ token, openUser, setOpenUser, userData }: NavbarProps) => {
           <>
             <Link to='/profile'>PROFILE</Link>
             <p
-              onClick={(event) => {
+              onClick={event => {
                 event.stopPropagation();
                 setOpenUser(!openUser);
               }}

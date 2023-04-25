@@ -18,7 +18,7 @@ const Profile = () => {
         Welcome <span>{userData.username}</span>
       </h1>
       <div className='active-posts'>
-        {userData.posts.map((post) => {
+        {userData.posts.map(post => {
           if (post.active)
             return (
               <div
@@ -36,7 +36,7 @@ const Profile = () => {
         })}
       </div>
       <div className='inactive-posts'>
-        {userData.posts.map((post) => {
+        {userData.posts.map(post => {
           if (!post.active)
             return (
               <div className='user-post' key={post._id}>
@@ -50,7 +50,7 @@ const Profile = () => {
         })}
       </div>
       <div className='user-messages'>
-        {userData.messages.map((msg) => (
+        {userData.messages.map(msg => (
           <div
             key={msg._id}
             className='message'

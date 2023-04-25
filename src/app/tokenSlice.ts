@@ -27,8 +27,8 @@ const tokenSlice = createSlice({
       state.notification = action.payload;
     },
   },
-  extraReducers: (builder) => {
-    builder.addCase(login.pending, (state) => {
+  extraReducers: builder => {
+    builder.addCase(login.pending, state => {
       state.loading = true;
     });
 
@@ -45,7 +45,7 @@ const tokenSlice = createSlice({
       }
     );
 
-    builder.addCase(login.rejected, (state) => {
+    builder.addCase(login.rejected, state => {
       state.loading = false;
       state.notification = 'Something wrong wrong, Please try again!!!';
       state.token = '';
