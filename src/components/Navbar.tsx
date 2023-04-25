@@ -16,39 +16,41 @@ const Navbar = ({ token, openUser, setOpenUser, userData }: NavbarProps) => {
   }
 
   return (
-    <nav className='navbar'>
-      <img src={logo} alt='logo web site' />
-      <div className='nav-link'>
-        <Link to='/'>HOME</Link>
-        {token ? (
-          <>
-            <Link to='/profile'>PROFILE</Link>
-            <p
-              onClick={event => {
-                event.stopPropagation();
-                setOpenUser(!openUser);
-              }}
-            >
-              {userData.username.slice(0, 1).toUpperCase()}
-            </p>
-            <Link
-              to='/'
-              onClick={handleSignOut}
-              className={openUser ? 'signout active' : 'signout'}
-            >
-              SIGN OUT
-            </Link>
-          </>
-        ) : (
-          <>
-            <Link to='/signin'>SIGN IN</Link>
-            <Link to='/register' className='signup'>
-              SIGN UP
-            </Link>
-          </>
-        )}
-      </div>
-    </nav>
+    <header className='absolute top-0 w-full bg-white'>
+      <section className='mx-auto flex max-w-6xl items-center justify-between p-2'>
+        <img src={logo} alt='logo web site' className='max-h-20' />
+        <nav className='nav-link  flex gap-6 text-2xl font-bold text-red-500'>
+          <Link to='/'>HOME</Link>
+          {token ? (
+            <>
+              <Link to='/profile'>PROFILE</Link>
+              <p
+                onClick={event => {
+                  event.stopPropagation();
+                  setOpenUser(!openUser);
+                }}
+              >
+                {userData.username.slice(0, 1).toUpperCase()}
+              </p>
+              <Link
+                to='/'
+                onClick={handleSignOut}
+                className={openUser ? 'signout active' : 'signout'}
+              >
+                SIGN OUT
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to='/signin'>SIGN IN</Link>
+              <Link to='/register' className='signup'>
+                SIGN UP
+              </Link>
+            </>
+          )}
+        </nav>
+      </section>
+    </header>
   );
 };
 

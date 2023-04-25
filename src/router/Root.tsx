@@ -25,7 +25,10 @@ const Root = () => {
   }, [token]);
 
   return (
-    <main onClick={() => setOpenUser(false)}>
+    <main
+      onClick={() => setOpenUser(false)}
+      className='min-h-screen bg-slate-50'
+    >
       <Navbar
         token={token}
         openUser={openUser}
