@@ -8,9 +8,9 @@ import { useEffect, useState } from 'react';
 const Root = () => {
   const dispatch = useAppDispatch();
 
-  const token = useAppSelector((state) => state.tokenReducer.token);
-  const posts = useAppSelector((state) => state.postsReducer.posts);
-  const userData = useAppSelector((state) => state.userDataReducer.userData);
+  const token = useAppSelector(state => state.tokenReducer.token);
+  const posts = useAppSelector(state => state.postsReducer.posts);
+  const userData = useAppSelector(state => state.userDataReducer.userData);
 
   const [openUser, setOpenUser] = useState(false);
 

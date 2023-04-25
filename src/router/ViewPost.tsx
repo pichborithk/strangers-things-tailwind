@@ -18,13 +18,13 @@ const ViewPost = () => {
   const { id } = useParams();
   const [messagesList, setMessagesList] = useState<Message[]>([]);
   const [isEditing, setIsEditing] = useState(false);
-  const post = posts.find((post) => post._id === id)!;
+  const post = posts.find(post => post._id === id)!;
 
   useEffect(() => {
     if (!post) return;
     if (post.author._id === userData._id) {
       const newMessagesList = userData.posts.find(
-        (userPost) => userPost._id === id
+        userPost => userPost._id === id
       )!.messages;
       setMessagesList(newMessagesList);
     }

@@ -29,8 +29,8 @@ const userDataSlice = createSlice({
       state.userData = initialUserData;
     },
   },
-  extraReducers: (builder) => {
-    builder.addCase(getUserData.pending, (state) => {
+  extraReducers: builder => {
+    builder.addCase(getUserData.pending, state => {
       state.loading = true;
     });
 
@@ -42,7 +42,7 @@ const userDataSlice = createSlice({
       }
     );
 
-    builder.addCase(getUserData.rejected, (state) => {
+    builder.addCase(getUserData.rejected, state => {
       state.loading = false;
       state.userData = initialUserData;
     });

@@ -11,7 +11,7 @@ const Home = () => {
   useEffect(() => {
     if (!posts) return;
     const newPosts = posts.filter(
-      (post) =>
+      post =>
         post.title.toLowerCase().includes(keyword.toLocaleLowerCase()) ||
         keyword === ''
     );
@@ -33,12 +33,12 @@ const Home = () => {
         <input
           placeholder='Search'
           value={keyword}
-          onChange={(event) => setKeyword(event.target.value)}
+          onChange={event => setKeyword(event.target.value)}
         />
         {token && <Link to='/new'>New Post</Link>}
       </form>
       <div className='posts'>
-        {postsFiltered.map((post) => (
+        {postsFiltered.map(post => (
           <PostCard
             post={post}
             token={token}

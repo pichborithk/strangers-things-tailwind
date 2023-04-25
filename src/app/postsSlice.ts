@@ -18,8 +18,8 @@ const postsSlice = createSlice({
   name: 'posts',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(getPosts.pending, (state) => {
+  extraReducers: builder => {
+    builder.addCase(getPosts.pending, state => {
       state.loading = true;
     });
 
@@ -31,7 +31,7 @@ const postsSlice = createSlice({
       }
     );
 
-    builder.addCase(getPosts.rejected, (state) => {
+    builder.addCase(getPosts.rejected, state => {
       state.loading = false;
       state.posts = [];
     });

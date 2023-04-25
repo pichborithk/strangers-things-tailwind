@@ -23,7 +23,7 @@ const PostMessages = () => {
           <h2>There Is No Message</h2>
         ))}
       {messagesList &&
-        messagesList.map((msg) => (
+        messagesList.map(msg => (
           <div key={msg._id} className='message'>
             <h2>From: {msg.fromUser.username}</h2>
             <p>{msg.content}</p>
@@ -37,7 +37,7 @@ const PostMessages = () => {
               name='message'
               placeholder='Send a message'
               value={message}
-              onChange={(event) => setMessage(event.target.value)}
+              onChange={event => setMessage(event.target.value)}
               required
             />
             {message && (

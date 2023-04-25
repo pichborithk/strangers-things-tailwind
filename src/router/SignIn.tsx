@@ -9,9 +9,7 @@ const SignIn = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const notification = useAppSelector(
-    (state) => state.tokenReducer.notification
-  );
+  const notification = useAppSelector(state => state.tokenReducer.notification);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [hidePassword, setHidePassword] = useState(true);
@@ -48,7 +46,7 @@ const SignIn = () => {
             name='username'
             placeholder='Enter Username'
             value={username}
-            onChange={(event) => setUsername(event.target.value)}
+            onChange={event => setUsername(event.target.value)}
             required
           />
         </fieldset>
@@ -59,7 +57,7 @@ const SignIn = () => {
             name='password'
             placeholder='Enter Password'
             value={password}
-            onChange={(event) => setPassword(event.target.value)}
+            onChange={event => setPassword(event.target.value)}
             required
           />
           <i
