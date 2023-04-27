@@ -16,34 +16,55 @@ const Navbar = ({ token, openUser, setOpenUser, userData }: NavbarProps) => {
   }
 
   return (
-    <header className='absolute top-0 w-full bg-white'>
+    <header className='absolute top-0 w-full border-b bg-white shadow'>
       <section className='mx-auto flex max-w-6xl items-center justify-between p-2'>
         <img src={logo} alt='logo web site' className='max-h-20' />
-        <nav className='nav-link  flex gap-6 text-2xl font-bold text-red-500'>
-          <Link to='/'>HOME</Link>
+        <nav className='relative flex items-center gap-6 font-jura text-2xl font-bold text-primary'>
+          <Link
+            to='/'
+            className='rounded-lg border-2 border-white px-2 py-2 hover:border-primary'
+          >
+            HOME
+          </Link>
           {token ? (
             <>
-              <Link to='/profile'>PROFILE</Link>
+              <Link
+                to='/profile'
+                className='rounded-lg border-2 border-white px-2 py-2 hover:border-primary'
+              >
+                PROFILE
+              </Link>
               <p
                 onClick={event => {
                   event.stopPropagation();
                   setOpenUser(!openUser);
                 }}
+                className='flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-primary font-gilroy text-3xl text-secondary'
               >
                 {userData.username.slice(0, 1).toUpperCase()}
               </p>
               <Link
                 to='/'
                 onClick={handleSignOut}
-                className={openUser ? 'signout active' : 'signout'}
+                className={`absolute -bottom-[41px] -right-16 -z-10  rounded-lg bg-primary px-2 py-2 text-xl text-secondary opacity-0  ${
+                  openUser ? 'signout' : ''
+                }`}
               >
                 SIGN OUT
               </Link>
             </>
           ) : (
             <>
-              <Link to='/signin'>SIGN IN</Link>
-              <Link to='/register' className='signup'>
+              <Link
+                to='/signin'
+                className='rounded-lg border-2 border-white px-2 py-2 hover:border-primary'
+              >
+                SIGN IN
+              </Link>
+              <Link
+                to='/register'
+                className='rounded-lg border-2 border-white  bg-primary px-2 py-2 text-white hover:border-primary'
+              >
                 SIGN UP
               </Link>
             </>
