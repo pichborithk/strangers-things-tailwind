@@ -16,8 +16,13 @@ const PostForm = (props: PostFromProps) => {
 
   return (
     <>
-      <fieldset className='input-fieldset'>
-        <label htmlFor='title' className={title ? 'focus' : ''}>
+      <fieldset className='group relative flex w-full flex-col'>
+        <label
+          htmlFor='title'
+          className={`pointer-events-none absolute left-4 top-2 bg-white px-2 transition-transform duration-300   ease-in-out focus-within:text-primary    
+           group-focus-within:-translate-x-1 group-focus-within:-translate-y-5 group-focus-within:text-base group-focus-within:text-primary
+          ${title ? 'label-focus' : ''}`}
+        >
           Title
         </label>
         <input
@@ -26,10 +31,16 @@ const PostForm = (props: PostFromProps) => {
           required
           value={title}
           onChange={event => setTitle(event.target.value)}
+          className='rounded-md border border-solid border-slate-500 px-4 py-2 focus:outline-red-500'
         />
       </fieldset>
-      <fieldset className='input-fieldset'>
-        <label htmlFor='description' className={description ? 'focus' : ''}>
+      <fieldset className='group relative flex w-full flex-col'>
+        <label
+          htmlFor='description'
+          className={`pointer-events-none absolute left-4 top-2 bg-white px-2 transition-transform duration-300  ease-in-out focus-within:text-primary    
+           group-focus-within:-translate-x-1 group-focus-within:-translate-y-5 group-focus-within:text-base group-focus-within:text-primary
+          ${description ? 'label-focus' : ''}`}
+        >
           Description
         </label>
         <input
@@ -38,10 +49,16 @@ const PostForm = (props: PostFromProps) => {
           required
           value={description}
           onChange={event => setDescription(event.target.value)}
+          className='rounded-md border border-solid border-slate-500 px-4 py-2 focus:outline-red-500'
         />
       </fieldset>
-      <fieldset className='input-fieldset'>
-        <label htmlFor='price' className={price ? 'focus' : ''}>
+      <fieldset className='group relative flex w-full flex-col'>
+        <label
+          htmlFor='price'
+          className={`pointer-events-none absolute left-4 top-2 bg-white px-2 transition-transform duration-300   ease-in-out focus-within:text-primary    
+           group-focus-within:-translate-x-1 group-focus-within:-translate-y-5 group-focus-within:text-base group-focus-within:text-primary
+          ${price ? 'label-focus' : ''}`}
+        >
           Price
         </label>
         <input
@@ -50,10 +67,16 @@ const PostForm = (props: PostFromProps) => {
           required
           value={price}
           onChange={event => setPrice(event.target.value)}
+          className='rounded-md border border-solid border-slate-500 px-4 py-2 focus:outline-red-500'
         />
       </fieldset>
-      <fieldset className='input-fieldset'>
-        <label htmlFor='location' className={location ? 'focus' : ''}>
+      <fieldset className='group relative flex w-full flex-col'>
+        <label
+          htmlFor='location'
+          className={`pointer-events-none absolute left-4 top-2 bg-white px-2 transition-transform duration-300   ease-in-out focus-within:text-primary    
+           group-focus-within:-translate-x-1 group-focus-within:-translate-y-5 group-focus-within:text-base group-focus-within:text-primary
+          ${location ? 'label-focus' : ''}`}
+        >
           Location
         </label>
         <input
@@ -61,11 +84,12 @@ const PostForm = (props: PostFromProps) => {
           type='text'
           value={location}
           onChange={event => setLocation(event.target.value)}
+          className='rounded-md border border-solid border-slate-500 px-4 py-2 focus:outline-red-500'
         />
       </fieldset>
-      <fieldset>
+      <fieldset className='self-start'>
         <input
-          className='check-box'
+          className='mr-2'
           name='deliver'
           type='checkbox'
           ref={deliverRef}
