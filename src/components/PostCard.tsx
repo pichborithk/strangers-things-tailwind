@@ -3,22 +3,29 @@ import { PostCardProps } from '../types/types';
 
 const PostCard = ({ post, token, isOwner }: PostCardProps) => {
   return (
-    <div className='post-card'>
+    <div className='flex justify-between rounded-md border border-slate-200 bg-slate-50 px-8 py-4 shadow-lg hover:shadow-full'>
       <div>
-        <h2 className='post-title'>{post.title}</h2>
-        <span>{post.description}</span>
+        <h2 className='text-2xl text-primary'>{post.title}</h2>
+        <span className='font-jura font-bold text-slate-400'>
+          {post.description}
+        </span>
         <p>
           By: {post.author.username}{' '}
-          {isOwner && <i className='fa-solid fa-circle-check'></i>}
+          {isOwner && <i className='fa-solid fa-circle-check text-checked'></i>}
         </p>
 
         <p>{post.__v} view(s)</p>
       </div>
-      <div className='right-side'>
-        <h2>{post.price}</h2>
-        <p>{post.location}</p>
+      <div className='flex flex-col items-end justify-between'>
+        <h2 className='text-2xl'>{post.price}</h2>
+        <p className='font-jura font-bold text-slate-400'>{post.location}</p>
         {token && (
-          <Link to={`/${post._id}`}>{isOwner ? 'View' : 'Send Message'}</Link>
+          <Link
+            to={`/${post._id}`}
+            className='w-fit rounded-md border border-primary px-2 py-1 text-primary hover:bg-primary hover:text-secondary'
+          >
+            {isOwner ? 'View' : 'Send Message'}
+          </Link>
         )}
       </div>
     </div>
