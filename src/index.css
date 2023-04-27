@@ -27,17 +27,3 @@
     @apply font-gilroy;
   }
 }
-
-/* .nav-link > a {
-  font-family: 'Jura', sans-serif;
-} */
-
-.signout {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.label-focus {
-  transform: translate(-5px, -25px);
-  font-size: 1rem;
-}

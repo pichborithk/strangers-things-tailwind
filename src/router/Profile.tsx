@@ -13,21 +13,23 @@ const Profile = () => {
   if (!userData) return <></>;
 
   return (
-    <div className='profile'>
-      <h1>
-        Welcome <span>{userData.username}</span>
+    <div className='mx-auto flex max-w-6xl flex-col items-center gap-4'>
+      <h1 className='text-4xl'>
+        Welcome <span className='text-primary'>{userData.username}</span>
       </h1>
-      <div className='active-posts'>
+      <div className='flex flex-wrap gap-2'>
         {userData.posts.map(post => {
           if (post.active)
             return (
               <div
-                className='user-post'
+                className='flex min-w-fit flex-1 cursor-pointer flex-col justify-between rounded-md border border-slate-200 bg-white px-12 py-8 shadow-full hover:-translate-y-1'
                 key={post._id}
                 onClick={() => navigate(`/${post._id}`)}
               >
-                <h2>{post.title}</h2>
-                <span>{post.description}</span>
+                <h2 className='text-2xl text-primary'>{post.title}</h2>
+                <span className='font-jura font-bold text-slate-400'>
+                  {post.description}
+                </span>
                 <p>{post.price}</p>
                 <p>{post.messages.length} message(s)</p>
                 <p>{post.__v} view(s)</p>
@@ -35,35 +37,46 @@ const Profile = () => {
             );
         })}
       </div>
-      <div className='inactive-posts'>
-        {userData.posts.map(post => {
-          if (!post.active)
-            return (
-              <div className='user-post' key={post._id}>
-                <h2>{post.title}</h2>
-                <span>{post.description}</span>
-                <p>{post.price}</p>
-                <p>{post.messages.length} message(s)</p>
-                <p>{post.__v} view(s)</p>
-              </div>
-            );
-        })}
-      </div>
-      <div className='user-messages'>
+      <h1 className='text-4xl'>All Messages</h1>
+      <div className='flex w-full flex-col gap-2'>
         {userData.messages.map(msg => (
           <div
             key={msg._id}
-            className='message'
+            className='w-full cursor-pointer rounded-md border border-slate-200 bg-white px-12 py-8 shadow-full hover:-translate-y-1'
             onClick={() => navigate(`/${msg.post?._id}`)}
           >
             {msg.fromUser._id === userData._id ? (
-              <h2>To: {msg.post?.author.username}</h2>
+              <h2 className='font-jura text-4xl text-primary'>
+                To: {msg.post?.author.username}
+              </h2>
             ) : (
-              <h2>From: {msg.fromUser.username}</h2>
+              <h2 className='font-jura text-4xl text-primary'>
+                From: {msg.fromUser.username}
+              </h2>
             )}
             <p>{msg.content}</p>
           </div>
         ))}
+      </div>
+      <h1 className='text-4xl text-primary'>Deleted Posts</h1>
+      <div className='flex flex-wrap gap-2'>
+        {userData.posts.map(post => {
+          if (!post.active)
+            return (
+              <div
+                key={post._id}
+                className='w-full rounded-md border border-gray-300 bg-gray-300 px-12 py-8 shadow'
+              >
+                <h2 className='text-2xl'>{post.title}</h2>
+                <span className='font-jura font-bold text-slate-400'>
+                  {post.description}
+                </span>
+                <p>{post.price}</p>
+                <p>{post.messages.length} message(s)</p>
+                <p>{post.__v} view(s)</p>
+              </div>
+            );
+        })}
       </div>
     </div>
   );

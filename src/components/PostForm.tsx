@@ -21,7 +21,9 @@ const PostForm = (props: PostFromProps) => {
           htmlFor='title'
           className={`pointer-events-none absolute left-4 top-2 bg-white px-2 transition-transform duration-300   ease-in-out focus-within:text-primary    
            group-focus-within:-translate-x-1 group-focus-within:-translate-y-5 group-focus-within:text-base group-focus-within:text-primary
-          ${title ? 'label-focus' : ''}`}
+          ${
+            title ? '-translate-x-1 -translate-y-5 text-base text-primary' : ''
+          }`}
         >
           Title
         </label>
@@ -39,7 +41,11 @@ const PostForm = (props: PostFromProps) => {
           htmlFor='description'
           className={`pointer-events-none absolute left-4 top-2 bg-white px-2 transition-transform duration-300  ease-in-out focus-within:text-primary    
            group-focus-within:-translate-x-1 group-focus-within:-translate-y-5 group-focus-within:text-base group-focus-within:text-primary
-          ${description ? 'label-focus' : ''}`}
+          ${
+            description
+              ? '-translate-x-1 -translate-y-5 text-base text-primary'
+              : ''
+          }`}
         >
           Description
         </label>
@@ -57,7 +63,9 @@ const PostForm = (props: PostFromProps) => {
           htmlFor='price'
           className={`pointer-events-none absolute left-4 top-2 bg-white px-2 transition-transform duration-300   ease-in-out focus-within:text-primary    
            group-focus-within:-translate-x-1 group-focus-within:-translate-y-5 group-focus-within:text-base group-focus-within:text-primary
-          ${price ? 'label-focus' : ''}`}
+          ${
+            price ? '-translate-x-1 -translate-y-5 text-base text-primary' : ''
+          }`}
         >
           Price
         </label>
@@ -75,7 +83,11 @@ const PostForm = (props: PostFromProps) => {
           htmlFor='location'
           className={`pointer-events-none absolute left-4 top-2 bg-white px-2 transition-transform duration-300   ease-in-out focus-within:text-primary    
            group-focus-within:-translate-x-1 group-focus-within:-translate-y-5 group-focus-within:text-base group-focus-within:text-primary
-          ${location ? 'label-focus' : ''}`}
+          ${
+            location
+              ? '-translate-x-1 -translate-y-5 text-base text-primary'
+              : ''
+          }`}
         >
           Location
         </label>

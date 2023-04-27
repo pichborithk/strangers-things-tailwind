@@ -16,7 +16,7 @@ const Navbar = ({ token, openUser, setOpenUser, userData }: NavbarProps) => {
   }
 
   return (
-    <header className='absolute top-0 w-full shadow-md'>
+    <header className='absolute top-0 w-full bg-white shadow-md'>
       <section className='mx-auto flex max-w-6xl items-center justify-between p-2'>
         <img src={logo} alt='logo web site' className='max-h-20' />
         <nav className='relative flex items-center gap-6 font-jura text-2xl font-bold text-primary'>
@@ -46,8 +46,10 @@ const Navbar = ({ token, openUser, setOpenUser, userData }: NavbarProps) => {
               <Link
                 to='/'
                 onClick={handleSignOut}
-                className={`pointer-events-none absolute -bottom-[41px] -right-16  rounded-lg bg-primary px-2 py-2 text-xl text-secondary opacity-0 transition-opacity duration-1000 ease-in-out ${
-                  openUser ? 'signout' : ''
+                className={`absolute -bottom-[41px] -right-16 rounded-lg bg-primary px-2 py-2 text-xl text-secondary transition-opacity duration-1000 ease-in-out ${
+                  openUser
+                    ? 'opacity-1 pointer-events-auto'
+                    : 'pointer-events-none opacity-0'
                 }`}
               >
                 SIGN OUT
