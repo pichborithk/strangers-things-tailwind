@@ -46,7 +46,7 @@ const Navbar = ({ token, openUser, setOpenUser, userData }: NavbarProps) => {
               <Link
                 to='/'
                 onClick={handleSignOut}
-                className={`absolute -bottom-[41px] -right-16 -z-10  rounded-lg bg-primary px-2 py-2 text-xl text-secondary opacity-0  ${
+                className={`absolute -bottom-[41px] -right-16 -z-10  rounded-lg bg-primary px-2 py-2 text-xl text-secondary opacity-0 ${
                   openUser ? 'signout' : ''
                 }`}
               >
