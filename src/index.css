@@ -22,10 +22,17 @@
   }
 }
 
-* {
-  font-family: Gilroy-ExtraBold;
+@layer base {
+  html {
+    @apply font-gilroy;
+  }
 }
 
-.nav-link > a {
+/* .nav-link > a {
   font-family: 'Jura', sans-serif;
+} */
+
+.signout {
+  opacity: 1;
+  z-index: 1;
 }
