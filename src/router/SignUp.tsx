@@ -55,7 +55,7 @@ const SignUp = () => {
   }, []);
 
   return (
-    <div className='mx-auto flex h-screen max-w-6xl items-center justify-center'>
+    <div className='-my-28 mx-auto flex h-screen max-w-6xl items-center justify-center'>
       <div className='flex w-full items-center justify-between overflow-hidden rounded-2xl border border-slate-200 shadow-md'>
         <form
           onSubmit={handleRegister}

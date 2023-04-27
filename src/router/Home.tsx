@@ -28,7 +28,7 @@ const Home = () => {
   // }, [postsFiltered]);
 
   return (
-    <div className='my-28'>
+    <div>
       <form className='mx-auto flex max-w-6xl items-center gap-4 text-xl'>
         <input
           placeholder='Search'

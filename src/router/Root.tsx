@@ -25,10 +25,7 @@ const Root = () => {
   }, [token]);
 
   return (
-    <main
-      onClick={() => setOpenUser(false)}
-      className='min-h-screen bg-slate-50'
-    >
+    <main onClick={() => setOpenUser(false)} className='min-h-screen py-28'>
       <Navbar
         token={token}
         openUser={openUser}
