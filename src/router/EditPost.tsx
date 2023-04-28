@@ -59,7 +59,7 @@ const EditPost = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className='relative flex w-2/3 flex-col items-center justify-evenly gap-8 rounded-2xl border border-solid border-red-100 bg-slate-50 px-20 py-12 text-xl  text-slate-700 shadow-md'
+      className='relative flex w-2/3 flex-col items-center justify-evenly gap-8 rounded-2xl border border-solid border-red-100 bg-slate-50 px-20 py-12 text-xl text-slate-700 shadow-md dark:border-slate-900 dark:bg-black dark:shadow-slate-900'
     >
       <h1 className='text-4xl text-primary'>Edit Post</h1>
       <PostForm
@@ -81,7 +81,7 @@ const EditPost = () => {
         <button
           type='button'
           onClick={() => handleCancel()}
-          className='mb-2 w-full rounded-lg border-2 border-black px-4 py-2 text-black hover:bg-black hover:text-secondary'
+          className='mb-2 w-full rounded-lg border-2 border-black px-4 py-2 text-black hover:bg-black hover:text-secondary dark:border-secondary dark:text-secondary dark:hover:bg-secondary dark:hover:text-black'
         >
           Cancel
         </button>
