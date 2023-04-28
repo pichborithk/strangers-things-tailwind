@@ -55,7 +55,7 @@ const PostForm = (props: PostFromProps) => {
           required
           value={description}
           onChange={event => setDescription(event.target.value)}
-          className='rounded-md border border-solid border-slate-500 px-4 py-2 focus:outline-red-500'
+          className='rounded-md border border-slate-500 px-4 py-2 focus:outline-red-500'
         />
       </fieldset>
       <fieldset className='group relative flex w-full flex-col'>
@@ -99,15 +99,22 @@ const PostForm = (props: PostFromProps) => {
           className='rounded-md border border-solid border-slate-500 px-4 py-2 focus:outline-red-500'
         />
       </fieldset>
-      <fieldset className='self-start'>
+      <fieldset className='relative flex w-full'>
         <input
-          className='mr-2'
+          className='peer mr-2 hidden'
           name='deliver'
+          id='deliver'
           type='checkbox'
           ref={deliverRef}
           defaultChecked={willDeliver && true}
         />
-        <label htmlFor='deliver'>Willing to Deliver?</label>
+        <label
+          htmlFor='deliver'
+          className='flex-1 cursor-pointer select-none rounded-md border-2  border-slate-500 px-4 py-2 peer-checked:border-primary'
+        >
+          Willing to Deliver?
+        </label>
+        <i className='fa-solid fa-circle-check absolute right-4 top-3 hidden text-checked peer-checked:inline'></i>
       </fieldset>
     </>
   );

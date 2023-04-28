@@ -1,7 +1,12 @@
 import { FormEvent, useEffect, useState } from 'react';
-import { Link, useNavigate, useOutletContext } from 'react-router-dom';
+import {
+  Link,
+  redirect,
+  useNavigate,
+  useOutletContext,
+} from 'react-router-dom';
 
-import logo from '../asset/Join (adjusted).png';
+import logo from '../asset/Resized_svg.svg';
 import { registerUser } from '../api/fetchAPI';
 import { useAppDispatch, useAppSelector } from '../app/store';
 import { setNotification } from '../app/tokenSlice';
@@ -56,7 +61,7 @@ const SignUp = () => {
 
   return (
     <div className='-my-28 mx-auto flex h-screen max-w-6xl items-center justify-center'>
-      <div className='flex w-full items-center justify-between overflow-hidden rounded-2xl border border-slate-200 shadow-md'>
+      <div className='flex w-full items-center justify-between overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-md'>
         <form
           onSubmit={handleRegister}
           className='relative flex w-1/2 flex-col items-center justify-evenly gap-8 bg-primary px-20 py-12 text-xl text-secondary shadow-md'
@@ -132,6 +137,7 @@ const SignUp = () => {
             {notification}
           </span>
         </form>
+
         <img src={logo} alt='join' className='flex-1' />
       </div>
     </div>
