@@ -16,17 +16,16 @@ const PostMessages = () => {
 
   return (
     <>
-      {post.author._id === userData._id &&
-        (messagesList.length ? (
-          <h2 className='text-2xl'>Messages For You</h2>
-        ) : (
-          <h2 className='text-2xl'>There Is No Message</h2>
-        ))}
+      {post.author._id === userData._id && (
+        <h2 className='text-2xl dark:text-secondary'>
+          {messagesList.length ? 'Messages For You' : 'There Is No Message'}
+        </h2>
+      )}
       {messagesList &&
         messagesList.map(msg => (
           <div
             key={msg._id}
-            className='w-full rounded-md border border-slate-200 bg-white px-12 py-8 shadow-lg'
+            className='w-full rounded-md border border-slate-200 bg-white px-12 py-8 shadow-lg dark:border-slate-700 dark:bg-black dark:text-secondary'
           >
             <h2 className='mb-2 font-jura text-4xl text-primary'>
               From: {msg.fromUser.username}
@@ -37,7 +36,7 @@ const PostMessages = () => {
       {post.author._id !== userData._id && (
         <form
           onSubmit={handleSubmitMessage}
-          className='w-full rounded-md border border-slate-200 bg-white px-12 py-8 shadow-lg'
+          className='w-full rounded-md border border-slate-200 bg-white px-12 py-8 shadow-lg  dark:border-slate-700 dark:bg-black'
         >
           <h2 className='mb-2 font-jura text-4xl text-primary'>
             To: {post.author.username}

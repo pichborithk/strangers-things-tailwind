@@ -3,7 +3,7 @@ import { PostCardProps } from '../types/types';
 
 const PostCard = ({ post, token, isOwner }: PostCardProps) => {
   return (
-    <div className='flex justify-between rounded-md border border-slate-200 bg-white px-8 py-4 shadow-lg hover:shadow-full'>
+    <div className='flex justify-between rounded-md border border-slate-200 bg-white px-8 py-4 shadow-lg hover:shadow-full dark:border-slate-700 dark:bg-black dark:text-secondary dark:hover:shadow-slate-600'>
       <div>
         <h2 className='text-2xl text-primary'>{post.title}</h2>
         <span className='font-jura font-bold text-slate-400'>

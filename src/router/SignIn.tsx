@@ -39,7 +39,7 @@ const SignIn = () => {
     <div className='-my-28 mx-auto flex h-screen max-w-6xl items-center justify-center'>
       <form
         onSubmit={handleSignIn}
-        className='relative flex w-1/2 flex-col items-center justify-evenly gap-12 rounded-2xl border border-solid border-red-100 bg-slate-50 px-20 py-12 text-xl text-primary shadow-md'
+        className='relative flex w-1/2 flex-col items-center justify-evenly gap-12 rounded-2xl border border-solid border-red-100 bg-slate-50 px-20 py-12 text-xl text-primary shadow-md dark:border-slate-900 dark:bg-black dark:shadow-slate-900'
       >
         <h1 className='text-4xl'>Sign In</h1>
         <fieldset className='flex w-full flex-col'>

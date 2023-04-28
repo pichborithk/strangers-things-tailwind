@@ -52,7 +52,7 @@ const ViewPost = () => {
 
   return (
     <div className='mx-auto flex max-w-4xl flex-col items-center gap-4'>
-      <div className='flex w-full justify-between rounded-md border border-slate-200 bg-white px-12 py-8 shadow-lg'>
+      <div className='flex w-full justify-between rounded-md border border-slate-200 bg-white px-12 py-8 shadow-lg dark:border-slate-700 dark:bg-black dark:text-secondary'>
         <div className='w-1/2'>
           <h2 className='text-2xl text-primary'>{post.title}</h2>
           <span className='font-jura font-bold text-slate-400'>
