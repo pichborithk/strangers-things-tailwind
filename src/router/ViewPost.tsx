@@ -63,7 +63,7 @@ const ViewPost = () => {
               <button
                 onClick={() => handleDelete()}
                 type='button'
-                className='mr-2 rounded-md border-2 border-black px-2 py-1 text-sm hover:bg-black hover:text-secondary'
+                className='mr-2 rounded-md border-2 border-black px-2 py-1 text-sm hover:bg-black hover:text-secondary dark:border-secondary dark:hover:bg-secondary dark:hover:text-black'
               >
                 DELETE
               </button>
