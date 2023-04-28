@@ -61,7 +61,7 @@ const SignUp = () => {
 
   return (
     <div className='-my-28 mx-auto flex h-screen max-w-6xl items-center justify-center'>
-      <div className='flex w-full items-center justify-between overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-md'>
+      <div className='flex w-full items-center justify-between overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-md dark:border-slate-900 dark:bg-black dark:shadow-slate-900'>
         <form
           onSubmit={handleRegister}
           className='relative flex w-1/2 flex-col items-center justify-evenly gap-8 bg-primary px-20 py-12 text-xl text-secondary shadow-md'
