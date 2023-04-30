@@ -19,11 +19,8 @@ const PostForm = (props: PostFromProps) => {
       <fieldset className='group relative flex w-full flex-col'>
         <label
           htmlFor='title'
-          className={`pointer-events-none absolute left-4 top-2 bg-white px-2 transition-transform duration-300 ease-in-out    
-           focus-within:text-primary group-focus-within:-translate-x-1 group-focus-within:-translate-y-5 group-focus-within:text-base group-focus-within:text-primary dark:bg-black dark:text-secondary dark:group-focus-within:text-secondary
-          ${
-            title ? '-translate-x-1 -translate-y-5 text-base text-primary' : ''
-          }`}
+          className={`pointer-events-none absolute left-4 top-2 bg-white px-2 transition-all duration-300 ease-in-out focus-within:text-primary group-focus-within:-translate-x-1 group-focus-within:-translate-y-5 group-focus-within:text-base group-focus-within:text-primary  dark:bg-black dark:text-secondary dark:group-focus-within:text-secondary
+          ${title && '-translate-x-1 -translate-y-5 text-base text-primary'}`}
         >
           Title
         </label>
@@ -33,18 +30,17 @@ const PostForm = (props: PostFromProps) => {
           required
           value={title}
           onChange={event => setTitle(event.target.value)}
-          className='rounded-md border border-solid border-slate-500 px-4 py-2 focus:outline-red-500 dark:bg-black dark:text-secondary dark:focus:outline-secondary'
+          className='rounded-md border border-solid border-slate-500 px-4 py-2 transition-colors duration-300 ease-in-out focus:outline-red-500 dark:bg-black dark:text-secondary dark:focus:outline-secondary'
         />
       </fieldset>
       <fieldset className='group relative flex w-full flex-col'>
         <label
           htmlFor='description'
-          className={`pointer-events-none absolute left-4 top-2 bg-white px-2 transition-transform duration-300  ease-in-out focus-within:text-primary    
+          className={`pointer-events-none absolute left-4 top-2 bg-white px-2 transition-all duration-300  ease-in-out focus-within:text-primary    
            group-focus-within:-translate-x-1 group-focus-within:-translate-y-5 group-focus-within:text-base group-focus-within:text-primary dark:bg-black dark:text-secondary dark:group-focus-within:text-secondary
           ${
-            description
-              ? '-translate-x-1 -translate-y-5 text-base text-primary'
-              : ''
+            description &&
+            '-translate-x-1 -translate-y-5 text-base text-primary'
           }`}
         >
           Description
@@ -55,17 +51,15 @@ const PostForm = (props: PostFromProps) => {
           required
           value={description}
           onChange={event => setDescription(event.target.value)}
-          className='rounded-md border border-slate-500 px-4 py-2 focus:outline-red-500 dark:bg-black dark:text-secondary dark:focus:outline-secondary'
+          className='rounded-md border border-slate-500 px-4 py-2 transition-colors duration-300 ease-in-out focus:outline-red-500 dark:bg-black dark:text-secondary dark:focus:outline-secondary'
         />
       </fieldset>
       <fieldset className='group relative flex w-full flex-col'>
         <label
           htmlFor='price'
-          className={`pointer-events-none absolute left-4 top-2 bg-white px-2 transition-transform duration-300   ease-in-out focus-within:text-primary    
+          className={`pointer-events-none absolute left-4 top-2 bg-white px-2 transition-all duration-300   ease-in-out focus-within:text-primary    
            group-focus-within:-translate-x-1 group-focus-within:-translate-y-5 group-focus-within:text-base group-focus-within:text-primary dark:bg-black dark:text-secondary dark:group-focus-within:text-secondary
-          ${
-            price ? '-translate-x-1 -translate-y-5 text-base text-primary' : ''
-          }`}
+          ${price && '-translate-x-1 -translate-y-5 text-base text-primary'}`}
         >
           Price
         </label>
@@ -75,18 +69,16 @@ const PostForm = (props: PostFromProps) => {
           required
           value={price}
           onChange={event => setPrice(event.target.value)}
-          className='rounded-md border border-solid border-slate-500 px-4 py-2 focus:outline-red-500 dark:bg-black dark:text-secondary dark:focus:outline-secondary'
+          className='rounded-md border border-solid border-slate-500 px-4 py-2 transition-colors duration-300 ease-in-out focus:outline-red-500 dark:bg-black dark:text-secondary dark:focus:outline-secondary'
         />
       </fieldset>
       <fieldset className='group relative flex w-full flex-col'>
         <label
           htmlFor='location'
-          className={`pointer-events-none absolute left-4 top-2 bg-white px-2 transition-transform duration-300   ease-in-out focus-within:text-primary    
+          className={`pointer-events-none absolute left-4 top-2 bg-white px-2 transition-all duration-300   ease-in-out focus-within:text-primary    
            group-focus-within:-translate-x-1 group-focus-within:-translate-y-5 group-focus-within:text-base group-focus-within:text-primary dark:bg-black dark:text-secondary dark:group-focus-within:text-secondary
           ${
-            location
-              ? '-translate-x-1 -translate-y-5 text-base text-primary'
-              : ''
+            location && '-translate-x-1 -translate-y-5 text-base text-primary'
           }`}
         >
           Location
@@ -96,7 +88,7 @@ const PostForm = (props: PostFromProps) => {
           type='text'
           value={location}
           onChange={event => setLocation(event.target.value)}
-          className='rounded-md border border-solid border-slate-500 px-4 py-2 focus:outline-red-500 dark:bg-black dark:text-secondary dark:focus:outline-secondary'
+          className='rounded-md border border-solid border-slate-500 px-4 py-2 transition-colors duration-300 ease-in-out focus:outline-red-500 dark:bg-black dark:text-secondary dark:focus:outline-secondary'
         />
       </fieldset>
       <fieldset className='relative flex w-full'>
