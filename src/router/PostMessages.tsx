@@ -2,16 +2,22 @@ import { FormEvent, useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { postMessage } from '../api/fetchAPI';
 import { ViewPostContext } from '../types/types';
+import { useAppDispatch } from '../app/store';
+import { getUserData } from '../app/userDataSlice';
 
 const PostMessages = () => {
   const { token, id, post, messagesList, userData } =
     useOutletContext<ViewPostContext>();
   const [message, setMessage] = useState('');
+  const dispatch = useAppDispatch();
 
   async function handleSubmitMessage(event: FormEvent) {
     event.preventDefault();
     const result = await postMessage(id!, token, message);
-    if (result) setMessage('');
+    if (result) {
+      setMessage('');
+      dispatch(getUserData(token));
+    }
   }
 
   return (
@@ -25,7 +31,7 @@ const PostMessages = () => {
         messagesList.map(msg => (
           <div
             key={msg._id}
-            className='w-full rounded-md border border-slate-200 bg-white px-12 py-8 shadow-lg dark:border-slate-700 dark:bg-black dark:text-secondary'
+            className='w-full rounded-md border border-slate-200 bg-white px-12 py-8 shadow-lg transition-colors duration-300 ease-in-out dark:border-slate-700 dark:bg-black dark:text-secondary'
           >
             <h2 className='mb-2 font-jura text-4xl text-primary'>
               From: {msg.fromUser.username}
@@ -36,7 +42,7 @@ const PostMessages = () => {
       {post.author._id !== userData._id && (
         <form
           onSubmit={handleSubmitMessage}
-          className='w-full rounded-md border border-slate-200 bg-white px-12 py-8 shadow-lg  dark:border-slate-700 dark:bg-black'
+          className='w-full rounded-md border border-slate-200 bg-white px-12 py-8 shadow-lg transition-colors duration-300 ease-in-out dark:border-slate-700 dark:bg-black'
         >
           <h2 className='mb-2 font-jura text-4xl text-primary'>
             To: {post.author.username}

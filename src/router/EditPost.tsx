@@ -59,7 +59,7 @@ const EditPost = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className='relative flex w-2/3 flex-col items-center justify-evenly gap-8 rounded-2xl border border-solid border-red-100 bg-slate-50 px-20 py-12 text-xl text-slate-700 shadow-md dark:border-slate-900 dark:bg-black dark:shadow-slate-900'
+      className='relative flex w-2/3 flex-col items-center justify-evenly gap-8 rounded-2xl border border-solid border-red-100 bg-slate-50 px-20 py-12 text-xl text-slate-700 shadow-md transition-colors duration-300 ease-in-out dark:border-slate-900 dark:bg-black dark:shadow-slate-900'
     >
       <h1 className='text-4xl text-primary'>Edit Post</h1>
       <PostForm

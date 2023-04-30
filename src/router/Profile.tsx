@@ -25,7 +25,7 @@ const Profile = () => {
           if (post.active)
             return (
               <div
-                className='flex min-w-fit flex-1 cursor-pointer flex-col justify-between rounded-md border border-slate-200 bg-white px-12 py-8 shadow-full hover:-translate-y-1 dark:border-slate-700 dark:bg-black dark:text-secondary'
+                className='flex min-w-fit flex-1 cursor-pointer flex-col justify-between rounded-md border border-slate-200 bg-white px-12 py-8 shadow-full transition-colors duration-300 ease-in-out hover:-translate-y-1  dark:border-slate-700 dark:bg-black dark:text-secondary'
                 key={post._id}
                 onClick={() => navigate(`/${post._id}`)}
               >
@@ -45,7 +45,7 @@ const Profile = () => {
         {userData.messages.map(msg => (
           <div
             key={msg._id}
-            className='w-full cursor-pointer rounded-md border border-slate-200 bg-white px-12 py-8 shadow-full hover:-translate-y-1 dark:border-slate-700 dark:bg-black dark:text-secondary'
+            className='w-full cursor-pointer rounded-md border border-slate-200 bg-white px-12 py-8 shadow-full transition-colors duration-300 ease-in-out hover:-translate-y-1 dark:border-slate-700 dark:bg-black dark:text-secondary'
             onClick={() => navigate(`/${msg.post?._id}`)}
           >
             {msg.fromUser._id === userData._id ? (
@@ -68,7 +68,7 @@ const Profile = () => {
             return (
               <div
                 key={post._id}
-                className='w-full rounded-md border border-gray-300 bg-gray-300 px-12 py-8 shadow dark:border-slate-700 dark:bg-slate-900 dark:text-secondary'
+                className='w-full rounded-md border border-gray-300 bg-gray-300 px-12 py-8 shadow transition-colors duration-300 ease-in-out dark:border-slate-700 dark:bg-slate-900 dark:text-secondary'
               >
                 <h2 className='text-2xl'>{post.title}</h2>
                 <span className='font-jura font-bold text-slate-400'>

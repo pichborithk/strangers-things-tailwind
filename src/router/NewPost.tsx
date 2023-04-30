@@ -30,7 +30,12 @@ const NewPost = () => {
           location,
           willDeliver: deliverRef.current!.checked,
         }
-      : { title, description, price, willDeliver: deliverRef.current!.checked };
+      : {
+          title,
+          description,
+          price,
+          willDeliver: deliverRef.current!.checked,
+        };
     try {
       const result = await makePost(dataObj, token);
       if (result && result.error) {
@@ -68,7 +73,7 @@ const NewPost = () => {
     <div className='-my-28 mx-auto flex h-screen max-w-6xl items-center justify-center'>
       <form
         onSubmit={handleSubmit}
-        className='relative flex w-1/2 flex-col items-center justify-evenly gap-8 rounded-2xl border border-solid border-red-100 bg-slate-50 px-20 py-12 text-xl text-slate-700 shadow-md dark:border-slate-900 dark:bg-black dark:shadow-slate-900'
+        className='relative flex w-1/2 flex-col items-center justify-evenly gap-8 rounded-2xl border border-solid border-red-100 bg-slate-50 px-20 py-12 text-xl text-slate-700 shadow-md transition-colors duration-500 ease-in-out dark:border-slate-900 dark:bg-black dark:shadow-slate-900'
       >
         <h1 className='text-4xl text-primary'>Add New Post</h1>
         <PostForm
